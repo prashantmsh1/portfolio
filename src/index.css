@@ -1,0 +1,32 @@
+/* Import Poppins from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@import "tailwindcss";
+
+@layer base {
+    /* Apply Poppins font to the entire document */
+    body {
+        font-family: "Poppins", sans-serif;
+    }
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+    width: 0px;
+}
+.scrollbar-thumb-purple-500::-webkit-scrollbar-thumb {
+    background-color: #8b5cf6; /* purple-500 */
+    border-radius: 0px;
+}
+.scrollbar-track-gray-800::-webkit-scrollbar-track {
+    background-color: #1f2937; /* gray-800 */
+}
+/* For Firefox */
+.scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #8b5cf6 #1f2937; /* thumb track */
+}
+
+.hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer and Edge */
+}
