@@ -1,6 +1,5 @@
 import "./App.css";
 import Home from "./app/components/home/Home";
-import Hero from "./app/components/hero/hero";
 function App() {
     return (
         <div className=" text-red-900 w-full bg-[#050014] h-screen ">
