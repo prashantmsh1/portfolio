@@ -60,29 +60,49 @@ const Footer = () => {
             icon: Github,
             href: "https://github.com/prashant",
             label: "GitHub",
-            color: "hover:text-gray-300",
+            color: "hover:text-[var(--pale_dogwood-500)]",
         },
         {
             icon: Linkedin,
             href: "https://linkedin.com/in/prashant",
             label: "LinkedIn",
-            color: "hover:text-blue-400",
+            color: "hover:text-[var(--rose_quartz-500)]",
         },
         {
             icon: Twitter,
             href: "https://twitter.com/prashant",
             label: "Twitter",
-            color: "hover:text-cyan-400",
+            color: "hover:text-[var(--pale_dogwood-500)]",
         },
-        { icon: MessageCircle, href: "#", label: "Discord", color: "hover:text-purple-400" },
+        {
+            icon: MessageCircle,
+            href: "#",
+            label: "Discord",
+            color: "hover:text-[var(--isabelline-900)]",
+        },
     ];
 
     return (
-        <footer className="relative bg-[#050014] border-t border-gray-800/50 overflow-hidden">
+        <footer
+            className="relative overflow-hidden border-t border-[rgba(201,173,167,0.24)]"
+            style={{
+                background:
+                    "radial-gradient(circle at 15% 10%, rgba(96,96,163,0.42), transparent 55%), radial-gradient(circle at 85% 20%, rgba(201,173,167,0.3), transparent 55%), radial-gradient(circle at 50% 100%, rgba(154,140,152,0.32), transparent 60%), linear-gradient(150deg, var(--space_cadet-300), var(--ultra_violet-500))",
+            }}>
             {/* Background Effects */}
-            <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-pink-600/20 rounded-full blur-3xl"></div>
+            <div className="pointer-events-none absolute inset-0 opacity-45">
+                <div
+                    className="absolute top-0 left-1/4 h-96 w-96 rounded-full blur-3xl"
+                    style={{
+                        background:
+                            "linear-gradient(135deg, rgba(64,64,111,0.4), rgba(201,173,167,0.22))",
+                    }}></div>
+                <div
+                    className="absolute bottom-0 right-1/4 h-64 w-64 rounded-full blur-3xl"
+                    style={{
+                        background:
+                            "linear-gradient(310deg, rgba(201,173,167,0.26), rgba(252,250,249,0.16))",
+                    }}></div>
             </div>
 
             <div className="relative">
@@ -96,19 +116,24 @@ const Footer = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                             className="lg:col-span-5">
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl">
-                                    <Code2 className="w-8 h-8 text-white" />
+                            <div className="mb-6 flex items-center gap-3">
+                                <div className="rounded-xl bg-gradient-to-r from-[rgba(64,64,111,0.9)] to-[rgba(201,173,167,0.8)] p-3 shadow-[0_12px_28px_-18px_rgba(96,96,163,0.55)]">
+                                    <Code2
+                                        className="h-8 w-8"
+                                        style={{ color: "var(--space_cadet-100)" }}
+                                    />
                                 </div>
                                 <div>
-                                    <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                                    <h3 className="bg-gradient-to-r from-[var(--space_cadet-700)] to-[var(--pale_dogwood-500)] bg-clip-text text-2xl font-bold text-transparent">
                                         Prashant Kumar
                                     </h3>
-                                    <p className="text-gray-400">Full Stack Developer</p>
+                                    <p className="text-[rgba(201,173,167,0.68)]">
+                                        Full Stack Developer
+                                    </p>
                                 </div>
                             </div>
 
-                            <p className="text-gray-300 mb-8 leading-relaxed max-w-md">
+                            <p className="mb-8 max-w-md leading-relaxed text-[rgba(235,232,234,0.75)]">
                                 Crafting exceptional digital experiences with modern technologies.
                                 Specializing in scalable web applications and user-centric design.
                             </p>
@@ -118,14 +143,14 @@ const Footer = () => {
                                 <motion.a
                                     href="mailto:prashantkr.msh@gmail.com"
                                     whileHover={{ x: 5 }}
-                                    className="flex items-center gap-3 text-gray-400 hover:text-purple-400 transition-all duration-300">
-                                    <Mail className="w-5 h-5" />
+                                    className="flex items-center gap-3 text-[rgba(201,173,167,0.68)] transition-all duration-300 hover:text-[var(--pale_dogwood-500)]">
+                                    <Mail className="h-5 w-5" />
                                     <span>prashantkr.msh@gmail.com</span>
                                 </motion.a>
                                 <motion.div
                                     whileHover={{ x: 5 }}
-                                    className="flex items-center gap-3 text-gray-400">
-                                    <MapPin className="w-5 h-5" />
+                                    className="flex items-center gap-3 text-[rgba(201,173,167,0.68)]">
+                                    <MapPin className="h-5 w-5" />
                                     <span>Remote • Available Worldwide</span>
                                 </motion.div>
                             </div>
@@ -144,8 +169,8 @@ const Footer = () => {
                                         transition={{ duration: 0.3, delay: index * 0.1 }}
                                         whileHover={{ scale: 1.1, y: -2 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className={`p-3 bg-gray-800/50 hover:bg-purple-600/20 border border-gray-700 hover:border-purple-400 rounded-xl transition-all duration-300 text-gray-400 ${social.color}`}>
-                                        <social.icon className="w-5 h-5" />
+                                        className={`rounded-xl border border-[rgba(201,173,167,0.24)] bg-[rgba(27,27,47,0.6)] p-3 text-[rgba(201,173,167,0.68)] transition-all duration-300 backdrop-blur-sm hover:border-[rgba(201,173,167,0.45)] ${social.color}`}>
+                                        <social.icon className="h-5 w-5" />
                                     </motion.a>
                                 ))}
                             </div>
@@ -160,7 +185,7 @@ const Footer = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.6, delay: sectionIndex * 0.1 }}>
-                                    <h4 className="text-white font-semibold text-lg mb-6">
+                                    <h4 className="mb-6 text-lg font-semibold text-[var(--isabelline-900)]">
                                         {section.title}
                                     </h4>
                                     <ul className="space-y-3">
@@ -176,8 +201,8 @@ const Footer = () => {
                                                 }}>
                                                 <a
                                                     href={link.href}
-                                                    className="text-gray-400 hover:text-purple-400 transition-colors text-sm flex items-center gap-2 group">
-                                                    <span className="group-hover:translate-x-1 transition-transform">
+                                                    className="group flex items-center gap-2 text-sm text-[rgba(201,173,167,0.68)] transition-colors hover:text-[var(--pale_dogwood-500)]">
+                                                    <span className="transition-transform group-hover:translate-x-1">
                                                         {link.name}
                                                     </span>
                                                 </a>
@@ -195,22 +220,20 @@ const Footer = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="mt-16 pt-8 border-t border-gray-800/50">
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                            <div className="text-center md:text-left">
-                                <h4 className="text-xl font-bold text-white mb-2">
+                        className="mt-16 border-t border-[rgba(201,173,167,0.24)] pt-8">
+                        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+                            <div className="text-center text-[rgba(235,232,234,0.75)] md:text-left">
+                                <h4 className="mb-2 text-xl font-bold text-[var(--isabelline-900)]">
                                     Ready to start your project?
                                 </h4>
-                                <p className="text-gray-400">
-                                    Let's bring your ideas to life with cutting-edge technology.
-                                </p>
+                                <p>Let's bring your ideas to life with cutting-edge technology.</p>
                             </div>
                             <motion.a
                                 href="#connect"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-purple-500/25">
-                                <Zap className="w-5 h-5" />
+                                className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[rgba(64,64,111,0.9)] to-[rgba(201,173,167,0.82)] px-8 py-3 font-semibold text-[var(--space_cadet-100)] shadow-[0_16px_34px_-18px_rgba(96,96,163,0.6)] transition-all duration-300 hover:shadow-[0_20px_42px_-16px_rgba(201,173,167,0.5)]">
+                                <Zap className="h-5 w-5" />
                                 Start Project
                                 <ExternalLink className="w-4 h-4" />
                             </motion.a>
@@ -219,26 +242,32 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="border-t border-gray-800/50 bg-gray-900/30 backdrop-blur-sm">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div className="border-t border-[rgba(201,173,167,0.24)] bg-[rgba(18,18,32,0.65)] backdrop-blur">
+                    <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
-                                className="flex items-center gap-2 text-gray-400 text-sm">
+                                className="flex items-center gap-2 text-sm text-[rgba(201,173,167,0.7)]">
                                 <span>© {currentYear}</span>
-                                <Heart className="w-4 h-4 text-red-400 animate-pulse" />
+                                <Heart
+                                    className="h-4 w-4 animate-pulse"
+                                    style={{ color: "var(--pale_dogwood-400)" }}
+                                />
                                 <span>Crafted with passion by Prashant Kumar</span>
-                                <Star className="w-4 h-4 text-yellow-400" />
+                                <Star
+                                    className="h-4 w-4"
+                                    style={{ color: "var(--isabelline-900)" }}
+                                />
                             </motion.div>
 
                             <motion.button
                                 onClick={scrollToTop}
                                 whileHover={{ scale: 1.1, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="p-3 bg-gray-800/50 hover:bg-purple-600/20 border border-gray-700 hover:border-purple-400 rounded-xl transition-all duration-300 text-gray-400 hover:text-purple-400 group">
-                                <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+                                className="group rounded-xl border border-[rgba(201,173,167,0.24)] bg-[rgba(27,27,47,0.6)] p-3 text-[rgba(201,173,167,0.68)] transition-all duration-300 hover:border-[rgba(201,173,167,0.45)] hover:text-[var(--pale_dogwood-500)]">
+                                <ArrowUp className="h-5 w-5 transition-transform group-hover:-translate-y-1" />
                             </motion.button>
                         </div>
                     </div>

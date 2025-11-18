@@ -12,7 +12,7 @@ type Props = {};
 
 const home = (props: Props) => {
     return (
-        <div className="text-red-900">
+        <div className="relative flex min-h-screen flex-col gap-24 text-[var(--isabelline-800)]">
             <Navbar />
             <section id="home">
                 <Hero />

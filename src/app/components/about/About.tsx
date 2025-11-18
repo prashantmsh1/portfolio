@@ -2,95 +2,146 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Code2, Sparkles, Zap, Target, Rocket, Users, Award, Coffee } from "lucide-react";
 
+const stats = [
+    {
+        icon: Zap,
+        label: "Years Experience",
+        value: "5+",
+        gradient: "from-[#c9ada7] to-[#9a8c98]",
+        accent: "text-[#f4efed]",
+    },
+    {
+        icon: Rocket,
+        label: "Projects Completed",
+        value: "50+",
+        gradient: "from-[#4a4e69] to-[#6060a3]",
+        accent: "text-[#fcfaf9]",
+    },
+    {
+        icon: Users,
+        label: "Happy Clients",
+        value: "30+",
+        gradient: "from-[#9a8c98] to-[#c9ada7]",
+        accent: "text-[#f7f1ee]",
+    },
+    {
+        icon: Award,
+        label: "Success Rate",
+        value: "98%",
+        gradient: "from-[#40406f] to-[#6060a3]",
+        accent: "text-[#faf6f4]",
+    },
+];
+
+const valueCards = [
+    {
+        icon: Target,
+        title: "Goal-Oriented",
+        description:
+            "Every line of code serves a purpose, driving measurable results and user satisfaction.",
+        gradient: "from-[rgba(64,64,111,0.28)] to-[rgba(201,173,167,0.22)]",
+        border: "border-[rgba(149,149,194,0.28)]",
+    },
+    {
+        icon: Sparkles,
+        title: "Innovation First",
+        description:
+            "Constantly exploring emerging technologies to deliver cutting-edge solutions.",
+        gradient: "from-[rgba(34,34,59,0.3)] to-[rgba(154,140,152,0.22)]",
+        border: "border-[rgba(149,149,194,0.28)]",
+    },
+    {
+        icon: Coffee,
+        title: "Always Learning",
+        description: "Committed to continuous growth and staying ahead of industry trends.",
+        gradient: "from-[rgba(201,173,167,0.24)] to-[rgba(242,233,228,0.18)]",
+        border: "border-[rgba(235,232,234,0.25)]",
+    },
+];
+
 const About = () => {
     return (
         <section
             id="about"
-            className="relative min-h-screen bg-[#050014] py-20 px-4 sm:px-6 lg:px-8 text-white overflow-hidden">
-            {/* Background Effects */}
-            <div className="absolute inset-0 opacity-30">
-                <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-600/20 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-600/20 rounded-full blur-3xl"></div>
+            className="relative min-h-screen overflow-hidden bg-[linear-gradient(160deg,rgba(7,7,12,0.94),rgba(27,27,47,0.92))] py-24 px-4 text-[var(--isabelline-800)] sm:px-6 lg:px-8">
+            <div className="pointer-events-none absolute inset-0 opacity-70">
+                <div className="absolute top-1/4 left-1/4 h-72 w-72 rounded-full blur-3xl bg-[radial-gradient(circle,rgba(64,64,111,0.45),transparent)]" />
+                <div className="absolute bottom-1/5 right-1/4 h-96 w-96 rounded-full blur-3xl bg-[radial-gradient(circle,rgba(201,173,167,0.32),transparent)]" />
+                <div className="absolute top-8 right-1/3 h-40 w-40 rounded-full blur-2xl bg-[radial-gradient(circle,rgba(154,140,152,0.28),transparent)]" />
             </div>
 
-            <div className="relative max-w-7xl mx-auto">
-                {/* Header */}
+            <div className="relative mx-auto max-w-7xl">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-20">
+                    className="mb-20 text-center">
                     <motion.div
-                        initial={{ scale: 0.8 }}
+                        initial={{ scale: 0.85 }}
                         whileInView={{ scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="inline-flex items-center gap-2 bg-purple-600/10 border border-purple-500/20 rounded-full px-6 py-2 mb-6">
-                        <Sparkles className="w-4 h-4 text-purple-400" />
-                        <span className="text-purple-300 text-sm font-medium">
-                            Meet the Developer
-                        </span>
+                        className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(149,149,194,0.3)] bg-[rgba(64,64,111,0.18)] px-6 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--isabelline-700)]">
+                        <Sparkles className="h-4 w-4 text-[var(--pale_dogwood-600)]" />
+                        Meet The Developer
                     </motion.div>
-                    <h2 className="text-5xl md:text-6xl font-bold mb-6">
-                        <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent">
+                    <h2 className="text-4xl font-semibold tracking-tight text-[var(--isabelline-900)] sm:text-5xl md:text-6xl">
+                        <span className="bg-[linear-gradient(120deg,#9595c2,#c9ada7)] bg-clip-text text-transparent">
                             Crafting Digital
                         </span>
                         <br />
-                        <span className="text-white">Experiences</span>
+                        Experiences With Intent
                     </h2>
-                    <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                        I'm Prashant, a passionate full-stack developer who turns complex problems
-                        into elegant digital solutions that users love.
+                    <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-[rgba(250,246,244,0.78)] sm:text-lg">
+                        I'm Prashant, a full-stack engineer translating complex problems into
+                        tactile, human-centered products. Every deliverable marries thoughtful
+                        design with resilient architecture.
                     </p>
                 </motion.div>
 
-                {/* Main Content Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
-                    {/* Profile Card */}
+                <div className="mb-20 grid grid-cols-1 gap-8 lg:grid-cols-12">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                         className="lg:col-span-5">
-                        <div className="relative group">
-                            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000"></div>
-                            <div className="relative bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-8 h-full">
-                                <div className="flex items-center gap-4 mb-6">
+                        <div className="group relative">
+                            <div className="absolute -inset-0.5 rounded-3xl bg-[linear-gradient(135deg,rgba(64,64,111,0.85),rgba(201,173,167,0.65))] opacity-70 blur transition duration-700 group-hover:opacity-100" />
+                            <div className="relative h-full rounded-3xl border border-[rgba(149,149,194,0.28)] bg-[rgba(13,13,23,0.84)] p-8 backdrop-blur-xl">
+                                <div className="mb-6 flex items-center gap-4">
                                     <div className="relative">
-                                        <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                                            <Code2 className="w-8 h-8 text-white" />
+                                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[linear-gradient(145deg,#40406f,#c9ada7)]">
+                                            <Code2 className="h-8 w-8 text-[#fcfaf9]" />
                                         </div>
-                                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-gray-900 flex items-center justify-center">
-                                            <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                                        <div className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full border-2 border-[rgba(27,27,47,0.92)] bg-[rgba(201,173,167,0.9)]">
+                                            <div className="h-2 w-2 animate-ping rounded-full bg-[#fcfaf9]" />
                                         </div>
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold text-white">
+                                        <h3 className="text-2xl font-semibold text-[var(--isabelline-900)]">
                                             Prashant Kumar
                                         </h3>
-                                        <p className="text-purple-400 font-medium">
+                                        <p className="text-sm font-medium text-[var(--rose_quartz-700)]">
                                             Full Stack Developer
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="space-y-4 mb-8">
-                                    <p className="text-gray-300 leading-relaxed">
-                                        With 5+ years of experience in the tech industry, I
-                                        specialize in creating scalable web applications using
-                                        cutting-edge technologies like React, Node.js, and modern
-                                        cloud platforms.
+                                <div className="mb-8 space-y-4 text-[rgba(250,246,244,0.78)]">
+                                    <p>
+                                        With 5+ years designing and shipping digital products, I
+                                        architect performant interfaces and services using React,
+                                        Node.js, and modern cloud-native tooling.
                                     </p>
-                                    <p className="text-gray-300 leading-relaxed">
-                                        My passion lies in solving complex problems with clean,
-                                        efficient code and creating user experiences that are both
-                                        beautiful and functional.
+                                    <p>
+                                        I obsess over details—building flows that feel intuitive,
+                                        accessible, and responsive while keeping codebases scalable
+                                        and maintainable.
                                     </p>
                                 </div>
 
-                                {/* Skills Tags */}
                                 <div className="flex flex-wrap gap-2">
                                     {[
                                         "React",
@@ -102,7 +153,7 @@ const About = () => {
                                     ].map((skill) => (
                                         <span
                                             key={skill}
-                                            className="px-3 py-1 bg-purple-600/20 text-purple-300 rounded-full text-sm font-medium border border-purple-500/20">
+                                            className="rounded-full border border-[rgba(201,173,167,0.35)] bg-[rgba(201,173,167,0.12)] px-3 py-1 text-sm font-medium text-[var(--isabelline-800)]">
                                             {skill}
                                         </span>
                                     ))}
@@ -111,57 +162,31 @@ const About = () => {
                         </div>
                     </motion.div>
 
-                    {/* Stats Grid */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="lg:col-span-7 grid grid-cols-2 gap-4">
-                        {[
-                            {
-                                icon: Zap,
-                                label: "Years Experience",
-                                value: "5+",
-                                color: "from-yellow-500 to-orange-500",
-                            },
-                            {
-                                icon: Rocket,
-                                label: "Projects Completed",
-                                value: "50+",
-                                color: "from-purple-500 to-pink-500",
-                            },
-                            {
-                                icon: Users,
-                                label: "Happy Clients",
-                                value: "30+",
-                                color: "from-cyan-500 to-blue-500",
-                            },
-                            {
-                                icon: Award,
-                                label: "Success Rate",
-                                value: "98%",
-                                color: "from-green-500 to-emerald-500",
-                            },
-                        ].map((stat, index) => (
+                        transition={{ duration: 0.8, delay: 0.15 }}
+                        className="grid grid-cols-2 gap-4 lg:col-span-7">
+                        {stats.map((stat, index) => (
                             <motion.div
                                 key={stat.label}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 24 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                                transition={{ duration: 0.6, delay: index * 0.12 }}
                                 className="group">
                                 <div className="relative">
-                                    <div className="absolute -inset-0.5 bg-gradient-to-r opacity-0 group-hover:opacity-75 transition duration-500 rounded-xl blur"></div>
-                                    <div className="relative bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 rounded-xl p-6 h-full hover:border-gray-600/50 transition-all duration-300">
+                                    <div className="absolute -inset-0.5 rounded-2xl bg-[linear-gradient(140deg,rgba(96,96,163,0.45),rgba(201,173,167,0.35))] opacity-0 blur transition duration-500 group-hover:opacity-100" />
+                                    <div className="relative h-full rounded-2xl border border-[rgba(149,149,194,0.28)] bg-[rgba(18,18,32,0.78)] p-6 backdrop-blur-xl transition-all duration-300 group-hover:border-[rgba(235,232,234,0.35)]">
                                         <div
-                                            className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${stat.color} mb-4`}>
-                                            <stat.icon className="w-6 h-6 text-white" />
+                                            className={`mb-4 inline-flex rounded-lg bg-gradient-to-r ${stat.gradient} p-3 shadow-[0_12px_30px_rgba(7,7,12,0.35)]`}>
+                                            <stat.icon className="h-6 w-6 text-[#07070c]" />
                                         </div>
-                                        <div className="text-3xl font-bold text-white mb-2">
+                                        <div className={`text-3xl font-semibold ${stat.accent}`}>
                                             {stat.value}
                                         </div>
-                                        <div className="text-gray-400 text-sm font-medium">
+                                        <div className="mt-2 text-xs font-semibold uppercase tracking-[0.35em] text-[rgba(250,246,244,0.6)]">
                                             {stat.label}
                                         </div>
                                     </div>
@@ -171,51 +196,27 @@ const About = () => {
                     </motion.div>
                 </div>
 
-                {/* Values Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {[
-                        {
-                            icon: Target,
-                            title: "Goal-Oriented",
-                            description:
-                                "Every line of code serves a purpose, driving measurable results and user satisfaction.",
-                            gradient: "from-purple-600/20 to-pink-600/20",
-                            border: "border-purple-500/20",
-                        },
-                        {
-                            icon: Sparkles,
-                            title: "Innovation First",
-                            description:
-                                "Constantly exploring emerging technologies to deliver cutting-edge solutions.",
-                            gradient: "from-cyan-600/20 to-blue-600/20",
-                            border: "border-cyan-500/20",
-                        },
-                        {
-                            icon: Coffee,
-                            title: "Always Learning",
-                            description:
-                                "Committed to continuous growth and staying ahead of industry trends.",
-                            gradient: "from-amber-600/20 to-orange-600/20",
-                            border: "border-amber-500/20",
-                        },
-                    ].map((value, index) => (
+                    className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                    {valueCards.map((value, index) => (
                         <motion.div
                             key={value.title}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.2 }}
+                            transition={{ duration: 0.6, delay: index * 0.12 }}
                             className="group">
                             <div
-                                className={`bg-gradient-to-br ${value.gradient} border ${value.border} rounded-xl p-6 h-full hover:scale-105 transition-all duration-300`}>
-                                <value.icon className="w-8 h-8 text-white mb-4 group-hover:scale-110 transition-transform" />
-                                <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
-                                <p className="text-gray-300 text-sm leading-relaxed">
+                                className={`h-full rounded-2xl border ${value.border} bg-gradient-to-br ${value.gradient} p-6 transition-all duration-300 backdrop-blur-lg group-hover:scale-[1.02]`}>
+                                <value.icon className="mb-4 h-8 w-8 text-[var(--isabelline-700)] transition-transform group-hover:scale-110" />
+                                <h3 className="text-xl font-semibold text-[var(--isabelline-900)]">
+                                    {value.title}
+                                </h3>
+                                <p className="mt-3 text-sm leading-relaxed text-[rgba(250,246,244,0.75)]">
                                     {value.description}
                                 </p>
                             </div>

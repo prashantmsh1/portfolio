@@ -1,18 +1,7 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { getTechIcon } from "../../utils/tech-icons";
-import {
-    ExternalLink,
-    Github,
-    Play,
-    Code,
-    Calendar,
-    Users,
-    Star,
-    ArrowRight,
-    Sparkles,
-    Zap,
-} from "lucide-react";
+import { ExternalLink, Github, Play, Users, Star, ArrowRight, Sparkles } from "lucide-react";
 
 interface Project {
     id: number;
@@ -145,40 +134,59 @@ const Projects = () => {
     const featuredProject = projectData.find((p) => p.featured);
 
     return (
-        <section className="relative min-h-screen bg-[#050014] py-20 px-4 sm:px-6 lg:px-8 text-white overflow-hidden">
+        <section
+            id="projects"
+            className="relative min-h-screen overflow-hidden py-24 px-4 text-[var(--isabelline-800)] sm:px-6 lg:px-8"
+            style={{
+                background:
+                    "radial-gradient(circle at 10% 20%, rgba(96,96,163,0.45), transparent 55%), radial-gradient(circle at 88% 18%, rgba(201,173,167,0.3), transparent 55%), radial-gradient(circle at 45% 80%, rgba(154,140,152,0.35), transparent 60%), linear-gradient(150deg, var(--space_cadet-300), var(--ultra_violet-500))",
+            }}>
             {/* Background Effects */}
-            <div className="absolute inset-0 opacity-30">
-                <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
+            <div className="pointer-events-none absolute inset-0">
                 <div
-                    className="absolute bottom-1/4 right-1/3 w-64 h-64 bg-cyan-600/20 rounded-full blur-3xl animate-pulse"
-                    style={{ animationDelay: "1s" }}></div>
+                    className="absolute top-1/4 left-1/3 h-96 w-96 rounded-full blur-3xl"
+                    style={{
+                        background:
+                            "linear-gradient(135deg, rgba(64,64,111,0.45), rgba(201,173,167,0.22))",
+                    }}
+                />
+                <div
+                    className="absolute bottom-1/4 right-1/3 h-64 w-64 rounded-full blur-3xl"
+                    style={{
+                        animationDelay: "1s",
+                        background:
+                            "linear-gradient(120deg, rgba(201,173,167,0.24), rgba(252,250,249,0.16))",
+                    }}
+                />
             </div>
 
-            <div className="relative max-w-7xl mx-auto">
+            <div className="relative mx-auto max-w-7xl">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-20">
+                    className="mb-20 text-center">
                     <motion.div
                         initial={{ scale: 0.8 }}
                         whileInView={{ scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="inline-flex items-center gap-2 bg-purple-600/10 border border-purple-500/20 rounded-full px-6 py-2 mb-6">
-                        <Sparkles className="w-4 h-4 text-purple-400" />
-                        <span className="text-purple-300 text-sm font-medium">Featured Work</span>
+                        className="mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(201,173,167,0.32)] bg-[rgba(27,27,47,0.6)] px-6 py-2 shadow-[0_12px_28px_-18px_rgba(7,7,12,0.65)]">
+                        <Sparkles className="h-4 w-4" style={{ color: "var(--isabelline-600)" }} />
+                        <span className="text-sm font-medium text-[var(--pale_dogwood-500)]">
+                            Featured Work
+                        </span>
                     </motion.div>
-                    <h2 className="text-5xl md:text-7xl font-bold mb-6">
-                        <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent">
+                    <h2 className="mb-6 text-5xl font-bold text-[var(--isabelline-900)] md:text-7xl">
+                        <span className="bg-gradient-to-r from-[var(--space_cadet-700)] via-[var(--rose_quartz-500)] to-[var(--pale_dogwood-500)] bg-clip-text text-transparent">
                             Creative
                         </span>
                         <br />
-                        <span className="text-white">Projects</span>
+                        <span className="text-[rgba(252,250,249,0.9)]">Projects</span>
                     </h2>
-                    <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                    <p className="mx-auto max-w-3xl text-xl text-[rgba(235,232,234,0.75)]">
                         Explore my latest work where innovation meets functionality. Each project
                         represents a unique challenge solved with modern technology and creative
                         thinking.
@@ -203,17 +211,17 @@ const Projects = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="flex flex-wrap justify-center gap-4 mb-12">
+                    className="mb-12 flex flex-wrap justify-center gap-4">
                     {categories.map((category) => (
                         <motion.button
                             key={category}
                             onClick={() => setFilter(category)}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                            className={`rounded-full px-6 py-3 font-medium transition-all duration-300 ${
                                 filter === category
-                                    ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg"
-                                    : "bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 border border-gray-600"
+                                    ? "bg-gradient-to-r from-[rgba(64,64,111,0.85)] to-[rgba(201,173,167,0.8)] text-[var(--space_cadet-100)] shadow-[0_16px_32px_-18px_rgba(96,96,163,0.6)]"
+                                    : "border border-[rgba(201,173,167,0.28)] bg-[rgba(27,27,47,0.55)] text-[rgba(235,232,234,0.72)] hover:border-[rgba(201,173,167,0.45)] hover:bg-[rgba(34,34,59,0.65)]"
                             }`}>
                             {category === "all" ? "All Projects" : category}
                         </motion.button>
@@ -260,11 +268,16 @@ const FeaturedProjectCard: React.FC<{ project: Project }> = ({ project }) => {
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-            <div className="relative bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-3xl overflow-hidden">
+            <div
+                className="absolute -inset-1 rounded-3xl opacity-25 blur transition duration-1000 group-hover:opacity-60"
+                style={{
+                    background:
+                        "linear-gradient(130deg, rgba(64,64,111,0.6), rgba(201,173,167,0.45))",
+                }}></div>
+            <div className="relative overflow-hidden rounded-3xl border border-[rgba(201,173,167,0.22)] bg-[rgba(18,18,32,0.78)] backdrop-blur-xl">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                     {/* Image Side */}
-                    <div className="relative h-96 lg:h-auto overflow-hidden">
+                    <div className="relative h-96 overflow-hidden lg:h-auto">
                         <motion.img
                             src={project.imageUrl}
                             alt={project.title}
@@ -272,56 +285,83 @@ const FeaturedProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                             transition={{ duration: 0.6, ease: "easeOut" }}
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div
+                            className="absolute inset-0"
+                            style={{
+                                background:
+                                    "linear-gradient(180deg, rgba(7,7,12,0.2), rgba(7,7,12,0.75))",
+                            }}></div>
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: isHovered ? 1 : 0 }}
-                            className="absolute inset-0 bg-purple-600/20 backdrop-blur-sm flex items-center justify-center">
+                            className="absolute inset-0 flex items-center justify-center"
+                            style={{
+                                background: "rgba(64,64,111,0.28)",
+                                backdropFilter: "blur(6px)",
+                            }}>
                             <motion.div
                                 initial={{ scale: 0 }}
                                 animate={{ scale: isHovered ? 1 : 0 }}
                                 transition={{ delay: 0.1 }}
-                                className="bg-white/20 backdrop-blur-sm rounded-full p-4">
-                                <Play className="w-8 h-8 text-white" />
+                                className="rounded-full bg-[rgba(252,250,249,0.12)] p-4 backdrop-blur">
+                                <Play
+                                    className="h-8 w-8"
+                                    style={{ color: "var(--isabelline-900)" }}
+                                />
                             </motion.div>
                         </motion.div>
                     </div>
 
                     {/* Content Side */}
-                    <div className="p-8 lg:p-12 flex flex-col justify-center">
-                        <div className="flex items-center gap-2 mb-4">
-                            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-sm font-bold">
+                    <div className="flex flex-col justify-center p-8 lg:p-12">
+                        <div className="mb-4 flex items-center gap-2">
+                            <span className="rounded-full bg-gradient-to-r from-[rgba(64,64,111,0.92)] to-[rgba(201,173,167,0.85)] px-3 py-1 text-sm font-bold text-[var(--space_cadet-100)]">
                                 FEATURED
                             </span>
-                            <span className="text-gray-400 text-sm">{project.year}</span>
+                            <span className="text-sm text-[rgba(201,173,167,0.68)]">
+                                {project.year}
+                            </span>
                         </div>
 
-                        <h3 className="text-4xl font-bold text-white mb-2">{project.title}</h3>
-                        <p className="text-xl text-purple-400 mb-4">{project.subtitle}</p>
-                        <p className="text-gray-300 mb-6 leading-relaxed">{project.description}</p>
+                        <h3 className="mb-2 text-4xl font-bold text-[var(--isabelline-900)]">
+                            {project.title}
+                        </h3>
+                        <p className="mb-4 text-xl text-[var(--pale_dogwood-500)]">
+                            {project.subtitle}
+                        </p>
+                        <p className="mb-6 leading-relaxed text-[rgba(235,232,234,0.75)]">
+                            {project.description}
+                        </p>
 
                         {/* Metrics */}
-                        <div className="grid grid-cols-3 gap-4 mb-6">
-                            <div className="text-center">
-                                <div className="text-2xl font-bold text-cyan-400">
+                        <div className="mb-6 grid grid-cols-3 gap-4">
+                            <div className="rounded-2xl border border-[rgba(201,173,167,0.18)] bg-[rgba(27,27,47,0.55)] p-4 text-center">
+                                <div className="text-2xl font-bold text-[var(--isabelline-900)]">
                                     {project.metrics.users}
                                 </div>
-                                <div className="text-xs text-gray-400">Active Users</div>
+                                <div className="text-xs text-[rgba(201,173,167,0.68)]">
+                                    Active Users
+                                </div>
                             </div>
-                            <div className="text-center">
-                                <div className="text-2xl font-bold text-green-400">
+                            <div className="rounded-2xl border border-[rgba(201,173,167,0.18)] bg-[rgba(27,27,47,0.55)] p-4 text-center">
+                                <div className="text-2xl font-bold text-[var(--isabelline-900)]">
                                     {project.metrics.performance}
                                 </div>
-                                <div className="text-xs text-gray-400">Performance</div>
+                                <div className="text-xs text-[rgba(201,173,167,0.68)]">
+                                    Performance
+                                </div>
                             </div>
-                            <div className="text-center">
+                            <div className="rounded-2xl border border-[rgba(201,173,167,0.18)] bg-[rgba(27,27,47,0.55)] p-4 text-center">
                                 <div className="flex items-center justify-center gap-1">
-                                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                                    <span className="text-2xl font-bold text-yellow-400">
+                                    <Star
+                                        className="h-4 w-4"
+                                        style={{ color: "var(--pale_dogwood-400)" }}
+                                    />
+                                    <span className="text-2xl font-bold text-[var(--pale_dogwood-400)]">
                                         {project.metrics.rating}
                                     </span>
                                 </div>
-                                <div className="text-xs text-gray-400">Rating</div>
+                                <div className="text-xs text-[rgba(201,173,167,0.68)]">Rating</div>
                             </div>
                         </div>
 
@@ -332,7 +372,7 @@ const FeaturedProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                                 return (
                                     <span
                                         key={tech}
-                                        className="flex items-center gap-2 bg-gray-800/50 border border-gray-600 px-3 py-1 rounded-full text-sm">
+                                        className="flex items-center gap-2 rounded-full border border-[rgba(201,173,167,0.22)] bg-[rgba(27,27,47,0.55)] px-3 py-1 text-sm">
                                         <span className={color}>{icon}</span>
                                         {tech}
                                     </span>
@@ -349,7 +389,7 @@ const FeaturedProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                                     rel="noopener noreferrer"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:shadow-lg transition-all">
+                                    className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[rgba(64,64,111,0.9)] to-[rgba(201,173,167,0.85)] px-6 py-3 font-semibold text-[var(--space_cadet-100)] shadow-[0_16px_34px_-18px_rgba(96,96,163,0.6)] transition-all hover:shadow-[0_20px_40px_-16px_rgba(201,173,167,0.45)]">
                                     <ExternalLink className="w-5 h-5" />
                                     Live Demo
                                 </motion.a>
@@ -361,7 +401,7 @@ const FeaturedProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                                     rel="noopener noreferrer"
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="bg-gray-800 border border-gray-600 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:border-gray-500 transition-all">
+                                    className="flex items-center gap-2 rounded-full border border-[rgba(201,173,167,0.28)] bg-[rgba(27,27,47,0.65)] px-6 py-3 font-semibold text-[var(--isabelline-800)] transition-all hover:border-[rgba(201,173,167,0.45)]">
                                     <Github className="w-5 h-5" />
                                     Code
                                 </motion.a>
@@ -382,9 +422,9 @@ const ProjectCard: React.FC<{
     onClick: (project: Project) => void;
 }> = ({ project, index, isHovered, onHover, onClick }) => {
     const statusColors = {
-        completed: "from-green-500 to-emerald-500",
-        "in-progress": "from-yellow-500 to-orange-500",
-        featured: "from-purple-500 to-pink-500",
+        completed: "from-[rgba(64,64,111,0.85)] to-[rgba(201,173,167,0.7)]",
+        "in-progress": "from-[rgba(201,173,167,0.85)] to-[rgba(252,250,249,0.78)]",
+        featured: "from-[rgba(96,96,163,0.9)] to-[rgba(201,173,167,0.82)]",
     };
 
     return (
@@ -399,8 +439,13 @@ const ProjectCard: React.FC<{
             onClick={() => onClick(project)}
             className="group cursor-pointer">
             <div className="relative">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-0 group-hover:opacity-75 transition duration-500"></div>
-                <div className="relative bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 rounded-2xl overflow-hidden hover:border-gray-600/50 transition-all duration-300">
+                <div
+                    className="absolute -inset-0.5 rounded-2xl opacity-0 blur transition duration-500 group-hover:opacity-75"
+                    style={{
+                        background:
+                            "linear-gradient(130deg, rgba(64,64,111,0.55), rgba(201,173,167,0.38))",
+                    }}></div>
+                <div className="relative overflow-hidden rounded-2xl border border-[rgba(201,173,167,0.22)] bg-[rgba(18,18,32,0.7)] backdrop-blur-xl transition-all duration-300 hover:border-[rgba(201,173,167,0.4)]">
                     {/* Image */}
                     <div className="relative h-48 overflow-hidden">
                         <motion.img
@@ -410,14 +455,19 @@ const ProjectCard: React.FC<{
                             transition={{ duration: 0.6, ease: "easeOut" }}
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div
+                            className="absolute inset-0"
+                            style={{
+                                background:
+                                    "linear-gradient(180deg, rgba(7,7,12,0.25), rgba(7,7,12,0.6))",
+                            }}></div>
 
                         {/* Status Badge */}
                         <div className="absolute top-4 left-4">
                             <span
                                 className={`bg-gradient-to-r ${
                                     statusColors[project.status]
-                                } text-white px-3 py-1 rounded-full text-xs font-bold uppercase`}>
+                                } rounded-full px-3 py-1 text-xs font-bold uppercase text-[var(--space_cadet-100)] shadow-[0_12px_24px_-16px_rgba(201,173,167,0.45)]`}>
                                 {project.status.replace("-", " ")}
                             </span>
                         </div>
@@ -426,7 +476,11 @@ const ProjectCard: React.FC<{
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: isHovered ? 1 : 0 }}
-                            className="absolute inset-0 bg-purple-600/20 backdrop-blur-sm flex items-center justify-center">
+                            className="absolute inset-0 flex items-center justify-center"
+                            style={{
+                                background: "rgba(64,64,111,0.28)",
+                                backdropFilter: "blur(6px)",
+                            }}>
                             <motion.div
                                 initial={{ scale: 0, rotate: -180 }}
                                 animate={{
@@ -434,8 +488,11 @@ const ProjectCard: React.FC<{
                                     rotate: isHovered ? 0 : -180,
                                 }}
                                 transition={{ delay: 0.1, type: "spring", damping: 15 }}
-                                className="bg-white/20 backdrop-blur-sm rounded-full p-3">
-                                <ArrowRight className="w-6 h-6 text-white" />
+                                className="rounded-full bg-[rgba(252,250,249,0.12)] p-3 backdrop-blur-sm">
+                                <ArrowRight
+                                    className="h-6 w-6"
+                                    style={{ color: "var(--isabelline-900)" }}
+                                />
                             </motion.div>
                         </motion.div>
                     </div>
@@ -443,16 +500,18 @@ const ProjectCard: React.FC<{
                     {/* Content */}
                     <div className="p-6">
                         <div className="flex items-center justify-between mb-2">
-                            <span className="text-purple-400 text-sm font-medium">
+                            <span className="text-sm font-medium text-[var(--pale_dogwood-500)]">
                                 {project.category}
                             </span>
-                            <span className="text-gray-400 text-sm">{project.year}</span>
+                            <span className="text-sm text-[rgba(201,173,167,0.68)]">
+                                {project.year}
+                            </span>
                         </div>
 
-                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
+                        <h3 className="mb-2 text-xl font-bold text-[var(--isabelline-900)] transition-colors group-hover:text-[var(--pale_dogwood-500)]">
                             {project.title}
                         </h3>
-                        <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+                        <p className="mb-4 line-clamp-2 text-sm text-[rgba(235,232,234,0.7)]">
                             {project.description}
                         </p>
 
@@ -463,14 +522,14 @@ const ProjectCard: React.FC<{
                                 return (
                                     <span
                                         key={tech}
-                                        className="flex items-center gap-1 bg-gray-800/50 px-2 py-1 rounded text-xs">
+                                        className="flex items-center gap-1 rounded border border-[rgba(201,173,167,0.2)] bg-[rgba(27,27,47,0.55)] px-2 py-1 text-xs">
                                         <span className={`${color} scale-75`}>{icon}</span>
                                         {tech}
                                     </span>
                                 );
                             })}
                             {project.technologies.length > 3 && (
-                                <span className="bg-gray-700/50 px-2 py-1 rounded text-xs text-gray-400">
+                                <span className="rounded border border-[rgba(201,173,167,0.18)] bg-[rgba(34,34,59,0.55)] px-2 py-1 text-xs text-[rgba(201,173,167,0.68)]">
                                     +{project.technologies.length - 3}
                                 </span>
                             )}
@@ -478,17 +537,21 @@ const ProjectCard: React.FC<{
 
                         {/* Metrics */}
                         {project.metrics.users && (
-                            <div className="flex items-center gap-4 text-sm">
+                            <div className="flex items-center gap-4 text-sm text-[rgba(201,173,167,0.7)]">
                                 <div className="flex items-center gap-1">
-                                    <Users className="w-4 h-4 text-cyan-400" />
-                                    <span className="text-gray-400">{project.metrics.users}</span>
+                                    <Users
+                                        className="h-4 w-4"
+                                        style={{ color: "var(--pale_dogwood-500)" }}
+                                    />
+                                    <span>{project.metrics.users}</span>
                                 </div>
                                 {project.metrics.rating && (
                                     <div className="flex items-center gap-1">
-                                        <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                                        <span className="text-gray-400">
-                                            {project.metrics.rating}
-                                        </span>
+                                        <Star
+                                            className="h-4 w-4"
+                                            style={{ color: "var(--pale_dogwood-400)" }}
+                                        />
+                                        <span>{project.metrics.rating}</span>
                                     </div>
                                 )}
                             </div>
@@ -510,19 +573,22 @@ const ProjectModal: React.FC<{
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur"
+            style={{ background: "rgba(7,7,12,0.85)" }}>
             <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
-                className="bg-gray-900 border border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl border border-[rgba(201,173,167,0.22)] bg-[rgba(18,18,32,0.85)]">
                 <div className="p-8">
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-3xl font-bold text-white">{project.title}</h2>
+                    <div className="mb-6 flex items-center justify-between">
+                        <h2 className="text-3xl font-bold text-[var(--isabelline-900)]">
+                            {project.title}
+                        </h2>
                         <button
                             onClick={onClose}
-                            className="text-gray-400 hover:text-white transition-colors">
+                            className="text-[rgba(201,173,167,0.65)] transition-colors hover:text-[var(--isabelline-900)]">
                             ✕
                         </button>
                     </div>
@@ -530,14 +596,16 @@ const ProjectModal: React.FC<{
                     <img
                         src={project.imageUrl}
                         alt={project.title}
-                        className="w-full h-64 object-cover rounded-xl mb-6"
+                        className="mb-6 h-64 w-full rounded-xl object-cover"
                     />
 
-                    <p className="text-gray-300 mb-6 leading-relaxed">{project.description}</p>
+                    <p className="mb-6 leading-relaxed text-[rgba(235,232,234,0.75)]">
+                        {project.description}
+                    </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <h3 className="text-lg font-semibold text-white mb-3">
+                            <h3 className="mb-3 text-lg font-semibold text-[var(--isabelline-900)]">
                                 Technologies Used
                             </h3>
                             <div className="flex flex-wrap gap-2">
@@ -546,7 +614,7 @@ const ProjectModal: React.FC<{
                                     return (
                                         <span
                                             key={tech}
-                                            className="flex items-center gap-2 bg-gray-800 px-3 py-2 rounded-lg text-sm">
+                                            className="flex items-center gap-2 rounded-lg border border-[rgba(201,173,167,0.2)] bg-[rgba(27,27,47,0.6)] px-3 py-2 text-sm">
                                             <span className={color}>{icon}</span>
                                             {tech}
                                         </span>
@@ -556,14 +624,16 @@ const ProjectModal: React.FC<{
                         </div>
 
                         <div>
-                            <h3 className="text-lg font-semibold text-white mb-3">Project Links</h3>
+                            <h3 className="mb-3 text-lg font-semibold text-[var(--isabelline-900)]">
+                                Project Links
+                            </h3>
                             <div className="space-y-3">
                                 {project.links.live && (
                                     <a
                                         href={project.links.live}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors">
+                                        className="flex items-center gap-2 text-[var(--pale_dogwood-500)] transition-colors hover:text-[var(--pale_dogwood-400)]">
                                         <ExternalLink className="w-4 h-4" />
                                         Live Demo
                                     </a>
@@ -573,7 +643,7 @@ const ProjectModal: React.FC<{
                                         href={project.links.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors">
+                                        className="flex items-center gap-2 text-[rgba(201,173,167,0.68)] transition-colors hover:text-[var(--isabelline-900)]">
                                         <Github className="w-4 h-4" />
                                         Source Code
                                     </a>

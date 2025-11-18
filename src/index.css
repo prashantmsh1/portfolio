@@ -4,9 +4,66 @@
 @import "tailwindcss";
 
 @layer base {
-    /* Apply Poppins font to the entire document */
+    :root {
+        --space_cadet-100: #07070c;
+        --space_cadet-200: #0d0d17;
+        --space_cadet-300: #141423;
+        --space_cadet-400: #1b1b2f;
+        --space_cadet-500: #22223b;
+        --space_cadet-600: #40406f;
+        --space_cadet-700: #6060a3;
+        --space_cadet-800: #9595c2;
+        --space_cadet-900: #cacae0;
+
+        --ultra_violet-100: #0f1015;
+        --ultra_violet-200: #1e1f2a;
+        --ultra_violet-300: #2c2f3f;
+        --ultra_violet-400: #3b3e54;
+        --ultra_violet-500: #4a4e69;
+        --ultra_violet-600: #666b8f;
+        --ultra_violet-700: #8b8fac;
+        --ultra_violet-800: #b1b4c8;
+        --ultra_violet-900: #d8dae3;
+
+        --rose_quartz-100: #1f1c1f;
+        --rose_quartz-200: #3f383e;
+        --rose_quartz-300: #5e535c;
+        --rose_quartz-400: #7d6f7b;
+        --rose_quartz-500: #9a8c98;
+        --rose_quartz-600: #aea4ad;
+        --rose_quartz-700: #c3bbc1;
+        --rose_quartz-800: #d7d2d6;
+        --rose_quartz-900: #ebe8ea;
+
+        --pale_dogwood-100: #2e1f1c;
+        --pale_dogwood-200: #5b3e38;
+        --pale_dogwood-300: #895d54;
+        --pale_dogwood-400: #ad8279;
+        --pale_dogwood-500: #c9ada7;
+        --pale_dogwood-600: #d4bdb8;
+        --pale_dogwood-700: #dececa;
+        --pale_dogwood-800: #e9dedc;
+        --pale_dogwood-900: #f4efed;
+
+        --isabelline-100: #3f2a1e;
+        --isabelline-200: #7f543d;
+        --isabelline-300: #b58165;
+        --isabelline-400: #d3b5a4;
+        --isabelline-500: #f2e9e4;
+        --isabelline-600: #f4ede9;
+        --isabelline-700: #f7f1ee;
+        --isabelline-800: #faf6f4;
+        --isabelline-900: #fcfaf9;
+    }
+
     body {
         font-family: "Poppins", sans-serif;
+        color: var(--isabelline-800);
+        background: radial-gradient(circle at 20% 20%, rgba(34, 34, 59, 0.9), transparent 55%),
+            radial-gradient(circle at 80% 10%, rgba(74, 78, 105, 0.8), transparent 45%),
+            radial-gradient(circle at 50% 85%, rgba(154, 140, 152, 0.32), transparent 55%),
+            linear-gradient(135deg, var(--space_cadet-300), var(--ultra_violet-400));
+        background-attachment: fixed;
     }
 }
 
@@ -14,16 +71,16 @@
     width: 0px;
 }
 .scrollbar-thumb-purple-500::-webkit-scrollbar-thumb {
-    background-color: #8b5cf6; /* purple-500 */
+    background-color: var(--rose_quartz-500);
     border-radius: 0px;
 }
 .scrollbar-track-gray-800::-webkit-scrollbar-track {
-    background-color: #1f2937; /* gray-800 */
+    background-color: var(--space_cadet-400);
 }
 /* For Firefox */
 .scrollbar-thin {
     scrollbar-width: thin;
-    scrollbar-color: #8b5cf6 #1f2937; /* thumb track */
+    scrollbar-color: var(--rose_quartz-500) var(--space_cadet-400);
 }
 
 .hide-scrollbar {

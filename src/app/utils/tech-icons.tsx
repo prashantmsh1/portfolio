@@ -6,11 +6,9 @@ import {
     Layout,
     FileCode,
     Palette,
-    Globe,
     Layers,
     PackageOpen,
     Zap,
-    Coffee,
 } from "lucide-react";
 
 // Technology icon mapping
@@ -19,88 +17,97 @@ export interface TechIcon {
     color: string; // Tailwind color class or hex value
 }
 
+const accentClasses = {
+    dawn: "text-[var(--pale_dogwood-500)]",
+    dusk: "text-[var(--rose_quartz-500)]",
+    twilight: "text-[var(--ultra_violet-700)]",
+    midnight: "text-[var(--space_cadet-700)]",
+    glow: "text-[rgba(252,250,249,0.85)]",
+    mist: "text-[rgba(201,173,167,0.75)]",
+};
+
 // Map lowercase tech names to their icons and colors
 export const techIcons: Record<string, TechIcon> = {
     // Frontend frameworks & libraries
     react: {
         icon: <Code />,
-        color: "text-blue-400",
+        color: accentClasses.dawn,
     },
     "vue.js": {
         icon: <Code />,
-        color: "text-green-500",
+        color: accentClasses.dusk,
     },
     "next.js": {
         icon: <Zap />,
-        color: "text-gray-200",
+        color: accentClasses.glow,
     },
     typescript: {
         icon: <FileCode />,
-        color: "text-blue-500",
+        color: accentClasses.twilight,
     },
     javascript: {
         icon: <FileCode />,
-        color: "text-yellow-400",
+        color: accentClasses.glow,
     },
 
     // Backend & database
     "node.js": {
         icon: <Server />,
-        color: "text-green-500",
+        color: accentClasses.midnight,
     },
     express: {
         icon: <Server />,
-        color: "text-gray-300",
+        color: accentClasses.mist,
     },
     mongodb: {
         icon: <Database />,
-        color: "text-green-600",
+        color: accentClasses.dawn,
     },
     postgresql: {
         icon: <Database />,
-        color: "text-blue-500",
+        color: accentClasses.twilight,
     },
     firebase: {
         icon: <Database />,
-        color: "text-yellow-500",
+        color: accentClasses.glow,
     },
     python: {
         icon: <Code />,
-        color: "text-blue-300",
+        color: accentClasses.mist,
     },
     django: {
         icon: <Server />,
-        color: "text-green-700",
+        color: accentClasses.midnight,
     },
 
     // CSS & styling
     "tailwind css": {
         icon: <Palette />,
-        color: "text-cyan-400",
+        color: accentClasses.twilight,
     },
     css: {
         icon: <Palette />,
-        color: "text-blue-500",
+        color: accentClasses.dusk,
     },
     bootstrap: {
         icon: <Layout />,
-        color: "text-purple-500",
+        color: accentClasses.dawn,
     },
     vuetify: {
         icon: <Layout />,
-        color: "text-blue-400",
+        color: accentClasses.twilight,
     },
 
     // Animation & UI
     "framer motion": {
         icon: <Layers />,
-        color: "text-purple-400",
+        color: accentClasses.dawn,
     },
 
     // Default icon for any technology not listed
     default: {
         icon: <PackageOpen />,
-        color: "text-gray-400",
+        color: accentClasses.dusk,
     },
 };
 
