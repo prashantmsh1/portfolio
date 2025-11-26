@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -169,7 +171,7 @@ const Footer = () => {
                                         transition={{ duration: 0.3, delay: index * 0.1 }}
                                         whileHover={{ scale: 1.1, y: -2 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className={`rounded-xl border border-[rgba(201,173,167,0.24)] bg-[rgba(27,27,47,0.6)] p-3 text-[rgba(201,173,167,0.68)] transition-all duration-300 backdrop-blur-sm hover:border-[rgba(201,173,167,0.45)] ${social.color}`}>
+                                        className={`rounded-xl border border-[rgba(201,173,167,0.24)] bg-[rgba(27,27,47,0.6)] p-3 text-[rgba(201,173,167,0.68)] transition-all duration-300 backdrop-blur-2xl hover:border-[rgba(201,173,167,0.45)] ${social.color}`}>
                                         <social.icon className="h-5 w-5" />
                                     </motion.a>
                                 ))}
@@ -242,7 +244,7 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="border-t border-[rgba(201,173,167,0.24)] bg-[rgba(18,18,32,0.65)] backdrop-blur">
+                <div className="border-t border-[rgba(201,173,167,0.24)] bg-[rgba(18,18,32,0.65)] backdrop-blur-2xl">
                     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
                             <motion.div

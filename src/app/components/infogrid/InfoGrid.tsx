@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -41,7 +43,7 @@ const InfoGrid = () => {
             transition: {
                 delay: i * 0.1,
                 duration: 0.6,
-                ease: [0.25, 0.46, 0.45, 0.94],
+                ease: [0.25, 0.46, 0.45, 0.94] as const,
             },
         }),
     };
@@ -123,7 +125,7 @@ const InfoGrid = () => {
                     <span className="mx-auto rounded-full border border-[rgba(149,149,194,0.35)] bg-[rgba(34,34,59,0.6)] px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.5em] text-[rgba(250,246,244,0.65)] lg:mx-0">
                         Info Grid
                     </span>
-                    <h3 className="text-3xl font-semibold text-isabelline-900 sm:text-4xl">
+                    <h3 className="text-4xl font-semibold text-isabelline-900 sm:text-5xl tracking-tight">
                         Where craft meets dependable delivery
                     </h3>
                     <p className="mx-auto max-w-3xl text-sm leading-relaxed text-[rgba(250,246,244,0.78)] sm:text-base lg:mx-0">
@@ -141,7 +143,7 @@ const InfoGrid = () => {
                         variants={cardVariants}
                         className="group relative overflow-hidden rounded-3xl">
                         <div className="absolute -inset-1 rounded-[32px] bg-[radial-gradient(circle_at_20%_10%,rgba(64,64,111,0.45),transparent_55%)] opacity-80 blur-3xl transition duration-700 group-hover:opacity-100" />
-                        <div className="glass-panel relative flex h-full flex-col justify-between overflow-hidden rounded-[28px] p-10">
+                        <div className="glass-panel relative flex h-full flex-col justify-between overflow-hidden rounded-[28px] p-10 backdrop-blur-2xl">
                             <div className="pointer-events-none absolute inset-0 opacity-50">
                                 <div className="absolute -left-10 top-16 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(201,173,167,0.4),transparent)]" />
                                 <div className="absolute -right-12 bottom-0 h-48 w-48 rounded-full bg-[radial-gradient(circle,rgba(149,149,194,0.35),transparent)]" />

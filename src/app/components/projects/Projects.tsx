@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getTechIcon } from "../../utils/tech-icons";
@@ -179,14 +181,14 @@ const Projects = () => {
                             Featured Work
                         </span>
                     </motion.div>
-                    <h2 className="mb-6 text-5xl font-bold text-[var(--isabelline-900)] md:text-7xl">
+                    <h2 className="mb-6 text-5xl font-bold text-[var(--isabelline-900)] md:text-7xl tracking-tight">
                         <span className="bg-gradient-to-r from-[var(--space_cadet-700)] via-[var(--rose_quartz-500)] to-[var(--pale_dogwood-500)] bg-clip-text text-transparent">
                             Creative
                         </span>
                         <br />
                         <span className="text-[rgba(252,250,249,0.9)]">Projects</span>
                     </h2>
-                    <p className="mx-auto max-w-3xl text-xl text-[rgba(235,232,234,0.75)]">
+                    <p className="mx-auto max-w-3xl text-xl text-[rgba(235,232,234,0.75)] leading-relaxed">
                         Explore my latest work where innovation meets functionality. Each project
                         represents a unique challenge solved with modern technology and creative
                         thinking.
@@ -274,7 +276,7 @@ const FeaturedProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                     background:
                         "linear-gradient(130deg, rgba(64,64,111,0.6), rgba(201,173,167,0.45))",
                 }}></div>
-            <div className="relative overflow-hidden rounded-3xl border border-[rgba(201,173,167,0.22)] bg-[rgba(18,18,32,0.78)] backdrop-blur-xl">
+            <div className="relative overflow-hidden rounded-3xl border border-[rgba(201,173,167,0.22)] bg-[rgba(18,18,32,0.78)] backdrop-blur-2xl shadow-2xl">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                     {/* Image Side */}
                     <div className="relative h-96 overflow-hidden lg:h-auto">
@@ -445,7 +447,7 @@ const ProjectCard: React.FC<{
                         background:
                             "linear-gradient(130deg, rgba(64,64,111,0.55), rgba(201,173,167,0.38))",
                     }}></div>
-                <div className="relative overflow-hidden rounded-2xl border border-[rgba(201,173,167,0.22)] bg-[rgba(18,18,32,0.7)] backdrop-blur-xl transition-all duration-300 hover:border-[rgba(201,173,167,0.4)]">
+                <div className="relative overflow-hidden rounded-2xl border border-[rgba(201,173,167,0.22)] bg-[rgba(18,18,32,0.7)] backdrop-blur-2xl transition-all duration-300 hover:border-[rgba(201,173,167,0.4)] hover:shadow-xl">
                     {/* Image */}
                     <div className="relative h-48 overflow-hidden">
                         <motion.img

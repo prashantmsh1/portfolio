@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getTechIcon } from "../../utils/tech-icons";
@@ -188,12 +190,12 @@ const Skills = () => {
                         <Sparkles className="h-4 w-4" style={{ color: "var(--isabelline-500)" }} />
                         Skill Matrix
                     </div>
-                    <h2 className="text-4xl font-semibold tracking-tight text-[var(--isabelline-900)] sm:text-5xl md:text-6xl">
+                    <h2 className="text-4xl font-semibold tracking-tight text-[var(--isabelline-900)] sm:text-5xl md:text-7xl">
                         <span className="bg-gradient-to-r from-[var(--space_cadet-700)] via-[var(--rose_quartz-500)] to-[var(--pale_dogwood-500)] bg-clip-text text-transparent">
                             Modern Engineering Superpowers
                         </span>
                     </h2>
-                    <p className="mx-auto mt-5 max-w-3xl text-base text-[rgba(235,232,234,0.72)] sm:text-lg">
+                    <p className="mx-auto mt-5 max-w-3xl text-base text-[rgba(235,232,234,0.72)] sm:text-lg leading-relaxed">
                         A curated blend of frontend craft, backend architecture, and data fluency
                         that lets me ship thoughtful experiences end-to-end.
                     </p>
@@ -339,14 +341,19 @@ const Skills = () => {
                             </p>
                             <div className="mt-6 space-y-4">
                                 {topSkills.map((skill) => {
-                                    const { icon, color } = getTechIcon(skill.name);
+                                    const { icon, gradient } = getTechIcon(skill.name);
                                     return (
                                         <div
                                             key={skill.name}
                                             className="flex items-start gap-4 rounded-2xl border border-[rgba(201,173,167,0.18)] bg-[rgba(27,27,47,0.6)] px-4 py-3">
                                             <span
-                                                className={`flex h-10 w-10 items-center justify-center rounded-xl bg-[rgba(252,250,249,0.08)] text-lg ${color}`}>
-                                                {icon}
+                                                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${gradient} text-lg text-white shadow-sm`}>
+                                                {React.isValidElement(icon)
+                                                    ? React.cloneElement(
+                                                          icon as React.ReactElement<any>,
+                                                          { className: "h-6 w-6" }
+                                                      )
+                                                    : icon}
                                             </span>
                                             <div className="flex-1">
                                                 <div className="flex items-center justify-between">
@@ -413,7 +420,7 @@ const Skills = () => {
 };
 
 const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) => {
-    const { icon, color } = getTechIcon(skill.name);
+    const { icon, gradient } = getTechIcon(skill.name);
     const LevelIcon = levelConfig[skill.level].icon;
     const ratingSegments = Array.from({ length: 5 }, (_, idx) => idx < skill.rating);
 
@@ -423,7 +430,7 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) 
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.05 }}
             whileHover={{ y: -8 }}
-            className="group relative overflow-hidden rounded-3xl border border-[rgba(201,173,167,0.2)] bg-[rgba(18,18,32,0.68)] p-6 text-[var(--isabelline-800)] backdrop-blur-xl transition-shadow duration-500 hover:shadow-[0_24px_45px_-20px_rgba(7,7,12,0.7)]">
+            className="group relative overflow-hidden rounded-3xl border border-[rgba(201,173,167,0.2)] bg-[rgba(18,18,32,0.68)] p-6 text-[var(--isabelline-800)] backdrop-blur-2xl transition-shadow duration-500 hover:shadow-[0_24px_45px_-20px_rgba(7,7,12,0.7)]">
             <div className="pointer-events-none absolute inset-0 border border-[rgba(201,173,167,0.08)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             <div
                 className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -436,8 +443,12 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) 
             <div className="relative flex items-start justify-between gap-4">
                 <div className="flex items-start gap-4">
                     <span
-                        className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-[rgba(252,250,249,0.08)] text-2xl ${color}`}>
-                        {icon}
+                        className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${gradient} text-2xl text-white shadow-md`}>
+                        {React.isValidElement(icon)
+                            ? React.cloneElement(icon as React.ReactElement<any>, {
+                                  className: "h-7 w-7",
+                              })
+                            : icon}
                     </span>
                     <div>
                         <div className="flex items-center gap-2">

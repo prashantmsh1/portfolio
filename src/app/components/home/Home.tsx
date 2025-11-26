@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Navbar from "../Navbar";
 import Hero from "../hero/hero";
@@ -8,9 +10,7 @@ import Skills from "../skills/Skills";
 import Connect from "../connect/Connect";
 import Footer from "../footer/Footer";
 
-type Props = {};
-
-const home = (props: Props) => {
+const home = () => {
     return (
         <div className="relative flex min-h-screen flex-col gap-24 text-[var(--isabelline-800)]">
             <Navbar />
