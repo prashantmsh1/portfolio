@@ -350,7 +350,9 @@ const Skills = () => {
                                                 className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${gradient} text-lg text-white shadow-sm`}>
                                                 {React.isValidElement(icon)
                                                     ? React.cloneElement(
-                                                          icon as React.ReactElement<any>,
+                                                          icon as React.ReactElement<{
+                                                              className?: string;
+                                                          }>,
                                                           { className: "h-6 w-6" }
                                                       )
                                                     : icon}
@@ -445,9 +447,12 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) 
                     <span
                         className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${gradient} text-2xl text-white shadow-md`}>
                         {React.isValidElement(icon)
-                            ? React.cloneElement(icon as React.ReactElement<any>, {
-                                  className: "h-7 w-7",
-                              })
+                            ? React.cloneElement(
+                                  icon as React.ReactElement<{ className?: string }>,
+                                  {
+                                      className: "h-7 w-7",
+                                  }
+                              )
                             : icon}
                     </span>
                     <div>
