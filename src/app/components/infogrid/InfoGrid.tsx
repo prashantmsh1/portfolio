@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -43,7 +41,7 @@ const InfoGrid = () => {
             transition: {
                 delay: i * 0.1,
                 duration: 0.6,
-                ease: [0.25, 0.46, 0.45, 0.94] as const,
+                ease: [0.25, 0.46, 0.45, 0.94],
             },
         }),
     };

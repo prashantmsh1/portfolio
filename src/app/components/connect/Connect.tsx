@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -23,7 +21,6 @@ import {
     ArrowUpRight,
     Calendar,
 } from "lucide-react";
-import { accentGradients } from "../../utils/tech-icons";
 
 const Connect = () => {
     const [formData, setFormData] = useState({
@@ -60,7 +57,7 @@ const Connect = () => {
             label: "Email",
             value: "prashantkr.msh@gmail.com",
             description: "Drop me a line anytime",
-            color: accentGradients.twilight,
+            color: "from-[rgba(64,64,111,0.85)] to-[rgba(201,173,167,0.78)]",
             href: "mailto:prashantkr.msh@gmail.com",
         },
         {
@@ -68,7 +65,7 @@ const Connect = () => {
             label: "Call",
             value: "+91 9876543210",
             description: "Mon-Fri from 9am to 6pm",
-            color: accentGradients.dusk,
+            color: "from-[rgba(201,173,167,0.78)] to-[rgba(252,250,249,0.75)]",
             href: "tel:+919876543210",
         },
         {
@@ -76,7 +73,7 @@ const Connect = () => {
             label: "Location",
             value: "Remote Worldwide",
             description: "Available globally",
-            color: accentGradients.midnight,
+            color: "from-[rgba(64,64,111,0.7)] to-[rgba(201,173,167,0.6)]",
             href: "#",
         },
         {
@@ -84,7 +81,7 @@ const Connect = () => {
             label: "Response Time",
             value: "< 24 hours",
             description: "Quick turnaround guaranteed",
-            color: accentGradients.dawn,
+            color: "from-[rgba(201,173,167,0.72)] to-[rgba(252,250,249,0.78)]",
             href: "#",
         },
     ];
@@ -396,9 +393,11 @@ const Connect = () => {
                                                 className={`pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-r ${method.color}`}
                                             />
                                             <div className="relative flex items-center gap-4">
-                                                <span
-                                                    className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-[rgba(201,173,167,0.45)] bg-gradient-to-br ${method.color} shadow-[0_4px_20px_rgba(0,0,0,0.2)]`}>
-                                                    <method.icon className="h-7 w-7 text-white" />
+                                                <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[rgba(201,173,167,0.32)] bg-[rgba(18,18,32,0.6)]">
+                                                    <method.icon
+                                                        className="h-6 w-6"
+                                                        style={{ color: "var(--space_cadet-100)" }}
+                                                    />
                                                 </span>
                                                 <div>
                                                     <p className="text-sm font-semibold text-[var(--isabelline-900)]">

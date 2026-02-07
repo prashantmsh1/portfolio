@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -21,7 +19,7 @@ const Navbar = () => {
 
                 <a
                     href="#connect"
-                    className="ml-2 rounded-full bg-[var(--isabelline-500)] px-5 py-2 text-sm font-semibold text-[var(--space_cadet-200)] transition-all hover:bg-[var(--isabelline-100)] hover:scale-105 hover:shadow-[0_0_20px_rgba(242,233,228,0.4)]">
+                    className="ml-2  rounded-full bg-[var(--isabelline-500)] px-5 py-2 text-sm font-semibold text-[var(--space_cadet-200)] transition-all hover:bg-[var(--isabelline-100)] hover:scale-105 hover:shadow-[0_0_20px_rgba(242,233,228,0.4)]">
                     Contact
                 </a>
             </div>
@@ -39,7 +37,7 @@ const NavLink = ({ href, children, active }: NavLinkProps) => {
     return (
         <a
             href={href}
-            className={`relative px-5 py-2 text-sm font-medium transition-colors duration-300 ${
+            className={` relative px-5 py-2 text-sm font-medium transition-colors duration-300 ${
                 active
                     ? "text-[var(--isabelline-900)]"
                     : "text-[rgba(235,232,234,0.6)] hover:text-[var(--isabelline-800)]"
@@ -48,7 +46,7 @@ const NavLink = ({ href, children, active }: NavLinkProps) => {
             {active && (
                 <motion.div
                     layoutId="nav-pill"
-                    className="absolute inset-0 -z-10 rounded-full bg-[rgba(201,173,167,0.15)] border border-[rgba(201,173,167,0.1)]"
+                    className="absolute inset-0  -z-10 rounded-full bg-[rgba(201,173,167,0.15)] border border-[rgba(201,173,167,0.1)]"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
             )}

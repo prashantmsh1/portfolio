@@ -1,37 +1,34 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Code2, Sparkles, Zap, Target, Rocket, Users, Award, Coffee } from "lucide-react";
-import { accentGradients } from "../../utils/tech-icons";
 
 const stats = [
     {
         icon: Zap,
         label: "Years Experience",
         value: "5+",
-        gradient: accentGradients.dawn,
+        gradient: "from-[#c9ada7] to-[#9a8c98]",
         accent: "text-[#f4efed]",
     },
     {
         icon: Rocket,
         label: "Projects Completed",
         value: "50+",
-        gradient: accentGradients.twilight,
+        gradient: "from-[#4a4e69] to-[#6060a3]",
         accent: "text-[#fcfaf9]",
     },
     {
         icon: Users,
         label: "Happy Clients",
         value: "30+",
-        gradient: accentGradients.dusk,
+        gradient: "from-[#9a8c98] to-[#c9ada7]",
         accent: "text-[#f7f1ee]",
     },
     {
         icon: Award,
         label: "Success Rate",
         value: "98%",
-        gradient: accentGradients.midnight,
+        gradient: "from-[#40406f] to-[#6060a3]",
         accent: "text-[#faf6f4]",
     },
 ];
@@ -42,7 +39,7 @@ const valueCards = [
         title: "Goal-Oriented",
         description:
             "Every line of code serves a purpose, driving measurable results and user satisfaction.",
-        gradient: accentGradients.twilight,
+        gradient: "from-[rgba(64,64,111,0.28)] to-[rgba(201,173,167,0.22)]",
         border: "border-[rgba(149,149,194,0.28)]",
     },
     {
@@ -50,14 +47,14 @@ const valueCards = [
         title: "Innovation First",
         description:
             "Constantly exploring emerging technologies to deliver cutting-edge solutions.",
-        gradient: accentGradients.midnight,
+        gradient: "from-[rgba(34,34,59,0.3)] to-[rgba(154,140,152,0.22)]",
         border: "border-[rgba(149,149,194,0.28)]",
     },
     {
         icon: Coffee,
         title: "Always Learning",
         description: "Committed to continuous growth and staying ahead of industry trends.",
-        gradient: accentGradients.dusk,
+        gradient: "from-[rgba(201,173,167,0.24)] to-[rgba(242,233,228,0.18)]",
         border: "border-[rgba(235,232,234,0.25)]",
     },
 ];
@@ -109,7 +106,7 @@ const About = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="lg:col-span-5 h-full">
+                        className="lg:col-span-5">
                         <div className="group relative">
                             <div className="absolute -inset-0.5 rounded-3xl bg-[linear-gradient(135deg,rgba(64,64,111,0.85),rgba(201,173,167,0.65))] opacity-70 blur transition duration-700 group-hover:opacity-100" />
                             <div className="relative h-full rounded-3xl border border-[rgba(149,149,194,0.28)] bg-[rgba(13,13,23,0.84)] p-8 backdrop-blur-2xl">
@@ -170,7 +167,7 @@ const About = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.15 }}
-                        className="grid grid-cols-2 gap-4 lg:col-span-7 h-full">
+                        className="grid grid-cols-2 gap-4 lg:col-span-7">
                         {stats.map((stat, index) => (
                             <motion.div
                                 key={stat.label}
@@ -178,13 +175,13 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: index * 0.12 }}
-                                className="group h-full">
+                                className="group">
                                 <div className="relative">
                                     <div className="absolute -inset-0.5 rounded-2xl bg-[linear-gradient(140deg,rgba(96,96,163,0.45),rgba(201,173,167,0.35))] opacity-0 blur transition duration-500 group-hover:opacity-100" />
                                     <div className="relative h-full rounded-2xl border border-[rgba(149,149,194,0.28)] bg-[rgba(18,18,32,0.78)] p-6 backdrop-blur-2xl transition-all duration-300 group-hover:border-[rgba(235,232,234,0.35)]">
                                         <div
-                                            className={`mb-4 inline-flex rounded-xl bg-gradient-to-br ${stat.gradient} p-3 shadow-lg`}>
-                                            <stat.icon className="h-6 w-6 text-white" />
+                                            className={`mb-4 inline-flex rounded-lg bg-gradient-to-r ${stat.gradient} p-3 shadow-[0_12px_30px_rgba(7,7,12,0.35)]`}>
+                                            <stat.icon className="h-6 w-6 text-[#07070c]" />
                                         </div>
                                         <div className={`text-3xl font-semibold ${stat.accent}`}>
                                             {stat.value}
@@ -214,11 +211,8 @@ const About = () => {
                             transition={{ duration: 0.6, delay: index * 0.12 }}
                             className="group">
                             <div
-                                className={`h-full rounded-2xl border ${value.border} bg-[rgba(18,18,32,0.68)] p-6 transition-all duration-300 backdrop-blur-2xl group-hover:scale-[1.02]`}>
-                                <div
-                                    className={`mb-4 inline-flex rounded-xl bg-gradient-to-br ${value.gradient} p-3 shadow-lg`}>
-                                    <value.icon className="h-6 w-6 text-white" />
-                                </div>
+                                className={`h-full rounded-2xl border ${value.border} bg-gradient-to-br ${value.gradient} p-6 transition-all duration-300 backdrop-blur-2xl group-hover:scale-[1.02]`}>
+                                <value.icon className="mb-4 h-8 w-8 text-[var(--isabelline-700)] transition-transform group-hover:scale-110" />
                                 <h3 className="text-xl font-semibold text-[var(--isabelline-900)]">
                                     {value.title}
                                 </h3>

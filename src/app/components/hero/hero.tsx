@@ -1,11 +1,12 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, MonitorSmartphone } from "lucide-react";
 import StarsBackground from "./StarsBackground";
+import { section } from "framer-motion/client";
 
-const hero = () => {
+type Props = {};
+
+const hero = (props: Props) => {
     return (
         <section>
             <div className="min h-[900px] bg-[var(--space_cadet-100)] text-[var(--isabelline-900)] relative overflow-hidden ">

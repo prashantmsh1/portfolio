@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getTechIcon } from "../../utils/tech-icons";
@@ -341,21 +339,14 @@ const Skills = () => {
                             </p>
                             <div className="mt-6 space-y-4">
                                 {topSkills.map((skill) => {
-                                    const { icon, gradient } = getTechIcon(skill.name);
+                                    const { icon, color } = getTechIcon(skill.name);
                                     return (
                                         <div
                                             key={skill.name}
                                             className="flex items-start gap-4 rounded-2xl border border-[rgba(201,173,167,0.18)] bg-[rgba(27,27,47,0.6)] px-4 py-3">
                                             <span
-                                                className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${gradient} text-lg text-white shadow-sm`}>
-                                                {React.isValidElement(icon)
-                                                    ? React.cloneElement(
-                                                          icon as React.ReactElement<{
-                                                              className?: string;
-                                                          }>,
-                                                          { className: "h-6 w-6" }
-                                                      )
-                                                    : icon}
+                                                className={`flex h-10 w-10 items-center justify-center rounded-xl bg-[rgba(252,250,249,0.08)] text-lg ${color}`}>
+                                                {icon}
                                             </span>
                                             <div className="flex-1">
                                                 <div className="flex items-center justify-between">
@@ -422,7 +413,7 @@ const Skills = () => {
 };
 
 const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) => {
-    const { icon, gradient } = getTechIcon(skill.name);
+    const { icon, color } = getTechIcon(skill.name);
     const LevelIcon = levelConfig[skill.level].icon;
     const ratingSegments = Array.from({ length: 5 }, (_, idx) => idx < skill.rating);
 
@@ -445,15 +436,8 @@ const SkillCard: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) 
             <div className="relative flex items-start justify-between gap-4">
                 <div className="flex items-start gap-4">
                     <span
-                        className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${gradient} text-2xl text-white shadow-md`}>
-                        {React.isValidElement(icon)
-                            ? React.cloneElement(
-                                  icon as React.ReactElement<{ className?: string }>,
-                                  {
-                                      className: "h-7 w-7",
-                                  }
-                              )
-                            : icon}
+                        className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-[rgba(252,250,249,0.08)] text-2xl ${color}`}>
+                        {icon}
                     </span>
                     <div>
                         <div className="flex items-center gap-2">
