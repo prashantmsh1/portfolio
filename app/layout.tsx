@@ -3,8 +3,8 @@ import "./globals.css";
 import SmoothScroll from "../src/app/components/SmoothScroll";
 
 export const metadata: Metadata = {
-    title: "Portfolio - Prashant",
-    description: "Professional portfolio showcasing projects and skills",
+    title: "Prashant | Creative Developer",
+    description: "A showcase of ultra-modern web experiences.",
 };
 
 export default function RootLayout({
@@ -13,16 +13,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className="antialiased">
+        <html lang="en" className="scroll-smooth">
+            <body className="antialiased overflow-x-hidden selection:bg-purple-500 selection:text-white">
                 <SmoothScroll />
-                <div className="relative min-h-screen w-full overflow-x-hidden text-isabelline-800">
-                    <div className="pointer-events-none absolute inset-0 -z-10">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(34,34,59,0.35),transparent_60%)]" />
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_18%,rgba(74,78,105,0.28),transparent_55%)]" />
-                        <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(34,34,59,0.92)_0%,rgba(46,31,28,0.8)_45%,rgba(74,78,105,0.88)_100%)]" />
-                    </div>
-                    {children}
+                <div className="relative min-h-screen w-full">
+                    {/* Subtle Grain or Noise could be added here if desired, keeping it clean for now */}
+                    <main className="flex min-h-screen flex-col">{children}</main>
                 </div>
             </body>
         </html>

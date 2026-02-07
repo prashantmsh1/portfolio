@@ -1,27 +1,43 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="fixed top-6 left-1/2 z-50 -translate-x-1/2 px-4">
-            <div className="relative flex items-center gap-1 rounded-full border border-[rgba(201,173,167,0.15)] bg-[rgba(27,27,47,0.65)] px-2 py-2 backdrop-blur-xl shadow-[0_8px_32px_rgba(7,7,12,0.35)]">
-                <NavLink href="#home" active>
-                    Home
-                </NavLink>
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className={`fixed top-0 left-0 right-0 z-50 flex justify-center py-6 transition-all duration-300 ${
+                scrolled ? "py-4" : "py-6"
+            }`}>
+            <div
+                className={`
+                glass-panel relative flex items-center gap-1 rounded-full px-4 py-3
+                transition-all duration-300
+                ${scrolled ? "bg-white/5 border-white/10 shadow-lg" : "bg-transparent border-transparent shadow-none"}
+            `}>
+                <NavLink href="#home">Home</NavLink>
                 <NavLink href="#projects">Work</NavLink>
                 <NavLink href="#about">About</NavLink>
                 <NavLink href="#skills">Skills</NavLink>
-                <NavLink href="#connect">Connect</NavLink>
-
-                <a
+                <div className="mx-2 h-4 w-px bg-white/10"></div>
+                <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     href="#connect"
-                    className="ml-2  rounded-full bg-[var(--isabelline-500)] px-5 py-2 text-sm font-semibold text-[var(--space_cadet-200)] transition-all hover:bg-[var(--isabelline-100)] hover:scale-105 hover:shadow-[0_0_20px_rgba(242,233,228,0.4)]">
-                    Contact
-                </a>
+                    className="ml-1 rounded-full bg-white px-5 py-2 text-sm font-semibold text-black transition-colors hover:bg-gray-200">
+                    Let's Talk
+                </motion.a>
             </div>
         </motion.nav>
     );
@@ -30,26 +46,30 @@ const Navbar = () => {
 interface NavLinkProps {
     href: string;
     children: React.ReactNode;
-    active?: boolean;
 }
 
-const NavLink = ({ href, children, active }: NavLinkProps) => {
+const NavLink = ({ href, children }: NavLinkProps) => {
+    const [isHovered, setIsHovered] = useState(false);
+
     return (
         <a
             href={href}
-            className={` relative px-5 py-2 text-sm font-medium transition-colors duration-300 ${
-                active
-                    ? "text-[var(--isabelline-900)]"
-                    : "text-[rgba(235,232,234,0.6)] hover:text-[var(--isabelline-800)]"
-            }`}>
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="relative px-4 py-2 text-sm font-medium text-gray-400 transition-colors hover:text-white">
             {children}
-            {active && (
-                <motion.div
-                    layoutId="nav-pill"
-                    className="absolute inset-0  -z-10 rounded-full bg-[rgba(201,173,167,0.15)] border border-[rgba(201,173,167,0.1)]"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-            )}
+            <AnimatePresence>
+                {isHovered && (
+                    <motion.div
+                        layoutId="nav-hover"
+                        className="absolute inset-0 -z-10 rounded-full bg-white/5"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                    />
+                )}
+            </AnimatePresence>
         </a>
     );
 };

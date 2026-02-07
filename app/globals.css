@@ -1,27 +1,48 @@
-/* Import Poppins from Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 @import "tailwindcss";
 
 @theme {
-    --font-display: "Satoshi", "sans-serif";
-    --breakpoint-3xl: 120rem;
-    --color-avocado-100: oklch(0.99 0 0);
-    --color-avocado-200: oklch(0.98 0.04 113.22);
-    --color-avocado-300: oklch(0.94 0.11 115.03);
-    --color-space_cadet-100: #07070c;
-    --color-space_cadet-200: #0d0d17;
-    --color-space_cadet-300: #141423;
-    --color-space_cadet-400: #1b1b2f;
-    --color-space_cadet-500: #22223b;
-    --color-space_cadet-600: #40406f;
-    --color-space_cadet-700: #6060a3;
-    --color-space_cadet-800: #9595c2;
-    --color-space_cadet-900: #cacae0;
-    /* ... */
+    --font-sans: "Inter", sans-serif;
+
+    --color-brand-black: #050505;
+    --color-brand-gray: #121212;
+    --color-brand-white: #fafafa;
+    --color-brand-accent: #6d28d9; /* Deep violet */
+    --color-brand-accent-glow: #8b5cf6;
+
+    --animate-fade-in: fade-in 0.5s ease-out;
+    --animate-slide-up: slide-up 0.5s ease-out;
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slide-up {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 }
+
 @layer base {
     :root {
+        --background: #050505;
+        --foreground: #fafafa;
+        --card: #121212;
+        --border: #27272a;
+        --accent: #6d28d9;
+
+        /* Legacy Variables */
         --space_cadet-100: #07070c;
         --space_cadet-200: #0d0d17;
         --space_cadet-300: #141423;
@@ -37,7 +58,7 @@
         --ultra_violet-300: #2c2f3f;
         --ultra_violet-400: #3b3e54;
         --ultra_violet-500: #4a4e69;
-        --ultra_violet-600: #666b8f;
+        --ultra_violet-600: #9599c3;
         --ultra_violet-700: #8b8fac;
         --ultra_violet-800: #b1b4c8;
         --ultra_violet-900: #d8dae3;
@@ -48,8 +69,8 @@
         --rose_quartz-400: #7d6f7b;
         --rose_quartz-500: #9a8c98;
         --rose_quartz-600: #aea4ad;
-        --rose_quartz-700: #c3bbc1;
-        --rose_quartz-800: #d7d2d6;
+        --rose_quartz-700: #d0c8ce;
+        --rose_quartz-800: #d9d2d7;
         --rose_quartz-900: #ebe8ea;
 
         --pale_dogwood-100: #2e1f1c;
@@ -74,33 +95,46 @@
     }
 
     body {
-        font-family: "Poppins", sans-serif;
-        color: var(--isabelline-800);
-        background: radial-gradient(circle at 20% 20%, rgba(34, 34, 59, 0.9), transparent 55%),
-            radial-gradient(circle at 80% 10%, rgba(74, 78, 105, 0.8), transparent 45%),
-            radial-gradient(circle at 50% 85%, rgba(154, 140, 152, 0.32), transparent 55%),
-            linear-gradient(135deg, var(--space_cadet-300), var(--ultra_violet-400));
-        background-attachment: fixed;
+        font-family: var(--font-sans);
+        background-color: var(--background);
+        color: var(--foreground);
+    }
+
+    /* Selection color */
+    ::selection {
+        background-color: var(--accent);
+        color: white;
     }
 }
 
-.scrollbar-thin::-webkit-scrollbar {
-    width: 0px;
-}
-.scrollbar-thumb-purple-500::-webkit-scrollbar-thumb {
-    background-color: var(--rose_quartz-500);
-    border-radius: 0px;
-}
-.scrollbar-track-gray-800::-webkit-scrollbar-track {
-    background-color: var(--space_cadet-400);
-}
-/* For Firefox */
-.scrollbar-thin {
-    scrollbar-width: thin;
-    scrollbar-color: var(--rose_quartz-500) var(--space_cadet-400);
+@layer utilities {
+    .glass-panel {
+        @apply bg-white/5 backdrop-blur-lg border border-white/10;
+    }
+
+    .text-glow {
+        text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+    }
+
+    .container-width {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
 }
 
-.hide-scrollbar {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer and Edge */
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
 }

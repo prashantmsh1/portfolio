@@ -12,27 +12,14 @@ import Footer from "../footer/Footer";
 
 const home = () => {
     return (
-        <div className="relative flex min-h-screen flex-col gap-24 text-[var(--isabelline-800)]">
+        <div className="relative flex min-h-screen flex-col">
             <Navbar />
-            <section id="home">
-                <Hero />
-            </section>
-
-            <section id="about">
-                <About />
-            </section>
-            <section>
-                <InfoGrid />
-            </section>
-            <section id="projects">
-                <Projects />
-            </section>
-            <section id="skills">
-                <Skills />
-            </section>
-            <section id="connect">
-                <Connect />
-            </section>
+            <Hero />
+            <About />
+            <InfoGrid />
+            <Projects />
+            <Skills />
+            <Connect />
             <Footer />
         </div>
     );
