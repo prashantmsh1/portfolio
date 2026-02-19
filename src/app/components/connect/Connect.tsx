@@ -34,10 +34,8 @@ const Connect = () => {
     ];
 
     return (
-        <section
-            id="connect"
-            className="relative z-10 bg-brand-black py-32 text-white overflow-hidden">
-            <div className="container-width relative z-10">
+        <section id="connect" className="relative  bg-brand-black py-32 text-white overflow-hidden">
+            <div className="container-width relative ">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
                     {/* Left Column: Heading & Socials */}
                     <motion.div

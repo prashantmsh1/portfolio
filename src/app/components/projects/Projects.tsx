@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import ProjectDrawer from "./ProjectDrawer";
 
 interface Project {
     id: number;
@@ -23,6 +24,8 @@ const projects: Project[] = [
         image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80",
         featured: true,
         category: "Web App",
+        link: "https://example.com/nexcommerce",
+        github: "https://github.com/example/nexcommerce",
     },
     {
         id: 2,
@@ -52,10 +55,18 @@ const projects: Project[] = [
 
 const Projects = () => {
     const [filter, setFilter] = useState("All");
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
     const categories = ["All", "Web App", "SaaS", "FinTech", "EdTech"];
 
     const filteredProjects =
         filter === "All" ? projects : projects.filter((p) => p.category === filter);
+
+    const handleProjectClick = (project: Project) => {
+        setSelectedProject(project);
+        setIsDrawerOpen(true);
+    };
 
     return (
         <section id="projects" className="relative z-10 bg-brand-black py-32 text-white">
@@ -97,7 +108,8 @@ const Projects = () => {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.4 }}
                                 key={project.id}
-                                className={`group relative overflow-hidden rounded-3xl bg-brand-gray ${
+                                onClick={() => handleProjectClick(project)}
+                                className={`group relative overflow-hidden rounded-3xl bg-brand-gray cursor-pointer ${
                                     project.featured
                                         ? "md:col-span-2 lg:col-span-2 aspect-video"
                                         : "aspect-square"
@@ -114,13 +126,9 @@ const Projects = () => {
                                         <div className="flex justify-between items-end mb-2">
                                             <h3 className="text-2xl font-bold">{project.title}</h3>
                                             <div className="flex gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                                {project.link && (
-                                                    <a
-                                                        href={project.link}
-                                                        className="p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md">
-                                                        <ArrowUpRight className="w-5 h-5" />
-                                                    </a>
-                                                )}
+                                                <button className="p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md">
+                                                    <ArrowUpRight className="w-5 h-5" />
+                                                </button>
                                             </div>
                                         </div>
                                         <p className="text-gray-300 mb-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 delay-100">
@@ -142,6 +150,12 @@ const Projects = () => {
                     </AnimatePresence>
                 </div>
             </div>
+
+            <ProjectDrawer
+                project={selectedProject}
+                isOpen={isDrawerOpen}
+                onClose={() => setIsDrawerOpen(false)}
+            />
         </section>
     );
 };

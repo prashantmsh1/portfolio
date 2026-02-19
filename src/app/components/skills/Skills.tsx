@@ -8,14 +8,14 @@ const skills = [
 
 const Skills = () => {
     return (
-        <section id="skills" className="relative z-10 bg-brand-black py-32 text-white">
+        <section id="skills" className="relative  bg-brand-black py-32 text-white">
             <div className="container-width">
                 <div className="mb-20 text-center">
                     <span className="mb-4 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-brand-accent">
                         Expertise
                     </span>
                     <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl">
-                        Tools of the <span className="text-gray-600">Trade</span>
+                        Tools of the <span className="text-brand-accent">Trade</span>
                     </h2>
                 </div>
 
