@@ -11,6 +11,7 @@ interface Project {
     link?: string;
     github?: string;
     image: string;
+    images?: string[];
     featured?: boolean;
     category: string;
 }
@@ -67,13 +68,7 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ project, isOpen, onClose 
                         animate={{ y: 0 }}
                         exit={{ y: "100%" }}
                         transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                        className="fixed bottom-0 left-0 right-0 z-50 h-[92vh] w-full overflow-hidden rounded-t-[2rem] bg-[#0a0a0a] border-t border-white/10 shadow-[0_-10px_40px_-15px_rgba(139,92,246,0.2)]"
-                        drag="y"
-                        dragConstraints={{ top: 0, bottom: 0 }}
-                        dragElastic={0.05}
-                        onDragEnd={(_, info) => {
-                            if (info.offset.y > 100) onClose();
-                        }}>
+                        className="fixed bottom-0 left-0 rounded-t-4xl right-0 z-50 h-[90vh] w-full  bg-[#0a0a0a] border-t border-white/10 shadow-[0_-10px_40px_-15px_rgba(139,92,246,0.2)]">
                         {/* Drag Handle for Mobile */}
                         <div className="absolute top-0 left-0 right-0 flex justify-center py-4 z-20">
                             <div className="h-1.5 w-16 rounded-full bg-white/20 hover:bg-white/30 transition-colors" />
@@ -87,9 +82,11 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ project, isOpen, onClose 
                         </button>
 
                         {/* Content Scroll Container */}
-                        <div className="h-full overflow-y-auto overflow-x-hidden scrollbar-hide">
+                        <div
+                            data-lenis-prevent
+                            className="h-full overflow-y-auto rounded-t-4xl overflow-x-hidden scrollbar-hide">
                             {/* Hero Image Section */}
-                            <div className="relative h-[45vh] w-full">
+                            <div className="relative h-[45vh] rounded-t-4xl w-full">
                                 <img
                                     src={project.image}
                                     alt={project.title}
@@ -220,6 +217,32 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ project, isOpen, onClose 
                                                 </div>
                                             </div>
                                         </div>
+
+                                        {/* Image Gallery */}
+                                        {project.images && project.images.length > 0 && (
+                                            <div className="mt-8 pt-8 border-t border-white/10">
+                                                <h3 className="text-2xl font-semibold text-white mb-6">
+                                                    Gallery
+                                                </h3>
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                                    {project.images.map((img, index) => (
+                                                        <motion.div
+                                                            key={`gallery-${index}`}
+                                                            initial={{ opacity: 0, y: 20 }}
+                                                            whileInView={{ opacity: 1, y: 0 }}
+                                                            viewport={{ once: true }}
+                                                            transition={{ delay: index * 0.1 }}
+                                                            className="relative aspect-video rounded-2xl overflow-hidden group border border-white/5 bg-white/5">
+                                                            <img
+                                                                src={img}
+                                                                alt={`${project.title} gallery image ${index + 1}`}
+                                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                                            />
+                                                        </motion.div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>

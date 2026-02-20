@@ -28,9 +28,9 @@ const Connect = () => {
     };
 
     const socialLinks = [
-        { icon: Github, href: "https://github.com/prashant", label: "GitHub" },
-        { icon: Linkedin, href: "https://linkedin.com/in/prashant", label: "LinkedIn" },
-        { icon: Twitter, href: "https://twitter.com/prashant", label: "Twitter" },
+        { icon: Github, href: "https://github.com/prashantmsh1", label: "GitHub" },
+        { icon: Linkedin, href: "https://linkedin.com/in/prashantkrmsh", label: "LinkedIn" },
+        { icon: Twitter, href: "https://twitter.com/prashantmsh", label: "Twitter" },
     ];
 
     return (

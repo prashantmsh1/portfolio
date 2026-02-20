@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -12,33 +14,81 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const navLinks = [
+        { name: "Home", href: "#home" },
+        { name: "Work", href: "#projects" },
+        { name: "About", href: "#about" },
+        { name: "Skills", href: "#skills" },
+    ];
+
     return (
         <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className={`fixed top-0 left-0 right-0 z-50 flex justify-center py-6 transition-all duration-300 ${
+            className={`fixed top-0 left-0 right-0 z-50 flex justify-center w-full transition-all duration-300 ${
                 scrolled ? "py-4" : "py-6"
             }`}>
             <div
                 className={`
                 glass-panel relative flex items-center gap-1 rounded-full px-4 py-3
                 transition-all duration-300
-                ${scrolled ? "bg-white/5 border-white/10 shadow-lg" : "bg-transparent border-transparent shadow-none"}
+                ${scrolled ? "bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 shadow-lg" : "bg-transparent border-transparent shadow-none"}
             `}>
-                <NavLink href="#home">Home</NavLink>
-                <NavLink href="#projects">Work</NavLink>
-                <NavLink href="#about">About</NavLink>
-                <NavLink href="#skills">Skills</NavLink>
-                <div className="mx-2 h-4 w-px bg-white/10"></div>
+                {/* Desktop Menu */}
+                <div className="hidden md:flex items-center gap-1">
+                    {navLinks.map((link) => (
+                        <NavLink key={link.name} href={link.href}>
+                            {link.name}
+                        </NavLink>
+                    ))}
+                    <div className="mx-2 h-4 w-px bg-white/10"></div>
+                </div>
+
+                {/* Mobile Menu Toggle */}
+                <div className="md:hidden flex items-center pr-2">
+                    <button
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        className="p-2 text-gray-400 hover:text-white transition-colors focus:outline-none"
+                        aria-label="Toggle menu">
+                        {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                    </button>
+                    <div className="mx-2 h-4 w-px bg-white/10"></div>
+                </div>
+
                 <motion.a
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     href="#connect"
+                    onClick={() => setMobileMenuOpen(false)}
                     className="ml-1 rounded-full bg-white px-5 py-2 text-sm font-semibold text-black transition-colors hover:bg-gray-200">
                     Let's Talk
                 </motion.a>
             </div>
+
+            {/* Mobile Menu Dropdown */}
+            <AnimatePresence>
+                {mobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95, y: -20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full mt-4 w-[90%] max-w-sm rounded-3xl bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 p-6 shadow-2xl md:hidden">
+                        <div className="flex flex-col gap-4">
+                            {navLinks.map((link) => (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="text-2xl font-semibold text-gray-300 hover:text-white transition-colors">
+                                    {link.name}
+                                </a>
+                            ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.nav>
     );
 };
