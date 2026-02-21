@@ -72,12 +72,15 @@ const hero = () => {
                                 </div>
                             </motion.button>
 
-                            <motion.div
+                            <motion.a
+                                href="https://mail.google.com/mail/?view=cm&fs=1&to=prashantkr.msh@gmail.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 whileHover={{ scale: 1.05 }}
                                 className="relative z-20 flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--isabelline-900)]/5 backdrop-blur-sm hover:bg-[var(--isabelline-900)]/10 transition-colors border border-[var(--isabelline-900)]/10">
                                 <Mail fontWeight={600} className="w-4 h-4 font-bold text-xs" />
                                 <span>prashantkr.msh@gmail.com</span>
-                            </motion.div>
+                            </motion.a>
                         </div>
                     </motion.div>
 

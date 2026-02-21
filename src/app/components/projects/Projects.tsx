@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import ProjectDrawer from "./ProjectDrawer";
+import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { storage } from "../../firebase/firebase";
 
 interface Project {
     id: number;
@@ -14,73 +16,119 @@ interface Project {
     images?: string[];
     featured?: boolean;
     category: string;
+    filepath?: string;
+    about?: string[];
 }
 
 const projects: Project[] = [
     {
         id: 1,
-        title: "NexCommerce",
+        title: "Evoke Ai Chat",
         description: "AI-powered e-commerce platform with real-time analytics.",
-        tags: ["Next.js", "Stripe", "AI"],
+        tags: ["React.js", "Node.js", "Express.js", "TypeScript", "Firebase", "Gemini API"],
         image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80",
-        images: [
-            "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=800&q=80",
-        ],
+        images: [],
         featured: true,
         category: "Web App",
-        link: "https://example.com/nexcommerce",
-        github: "https://github.com/example/nexcommerce",
-    },
-    {
-        id: 2,
-        title: "TaskFlow",
-        description: "Smart project management for remote teams.",
-        tags: ["Vue", "Python", "Redis"],
-        image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=800&q=80",
-        images: [
-            "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1517048676732-d65af93c5f20?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+        link: "https://evokechat.prashantai.com/",
+        github: "https://github.com/prashantmsh1/evoke_chat",
+        filepath: "/projects/evokechat",
+        about: [
+            "This project is an AI-powered conversational search engine heavily inspired by Perplexity, designed to process complex user inquiries and deliver intelligent, context-aware answers.",
+            "The highly responsive user interface is built with React 19, Vite, Redux Toolkit for state management, and modern component design utilizing Tailwind CSS v4 alongside shadcn/ui.",
+            "The robust backend infrastructure runs on Node.js and Express, securely managing user data and API routes with Prisma ORM and PostgreSQL alongside Firebase for authentication.",
+            "It seamlessly integrates with Gemini API to generate diverse, real-time streaming responses within continuous chat threads.",
         ],
-        category: "SaaS",
     },
-    {
-        id: 3,
-        title: "FinanceAI",
-        description: "Deep learning finance dashboard.",
-        tags: ["React", "D3.js", "Node"],
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-        images: [
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80",
-        ],
-        category: "FinTech",
-    },
-    {
-        id: 4,
-        title: "CodeMentor",
-        description: "Interactive coding education platform.",
-        tags: ["Next.js", "Supabase"],
-        image: "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=800&q=80",
-        images: [
-            "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
-        ],
-        category: "EdTech",
-    },
+    // {
+    //     id: 2,
+    //     title: "TaskFlow",
+    //     description: "Smart project management for remote teams.",
+    //     tags: ["Vue", "Python", "Redis"],
+    //     image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=800&q=80",
+    //     images: [
+    //         "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+    //         "https://images.unsplash.com/photo-1517048676732-d65af93c5f20?auto=format&fit=crop&w=800&q=80",
+    //         "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+    //     ],
+    //     category: "SaaS",
+    // },
+    // {
+    //     id: 3,
+    //     title: "FinanceAI",
+    //     description: "Deep learning finance dashboard.",
+    //     tags: ["React", "D3.js", "Node"],
+    //     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    //     images: [
+    //         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    //         "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80",
+    //     ],
+    //     category: "FinTech",
+    // },
+    // {
+    //     id: 4,
+    //     title: "CodeMentor",
+    //     description: "Interactive coding education platform.",
+    //     tags: ["Next.js", "Supabase"],
+    //     image: "https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=800&q=80",
+    //     images: [
+    //         "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
+    //         "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
+    //         "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
+    //     ],
+    //     category: "EdTech",
+    // },
 ];
 
 const Projects = () => {
+    const [projectList, setProjectList] = useState<Project[]>(projects);
     const [filter, setFilter] = useState("All");
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+    useEffect(() => {
+        const fetchImages = async () => {
+            const updatedProjects = await Promise.all(
+                projects.map(async (project) => {
+                    if (!project.filepath) return project;
+                    try {
+                        const folderRef = ref(storage, project.filepath);
+                        const result = await listAll(folderRef);
+
+                        let mainImageUrl = project.image;
+                        const otherImages: string[] = [];
+
+                        await Promise.all(
+                            result.items.map(async (itemRef) => {
+                                const url = await getDownloadURL(itemRef);
+                                if (itemRef.name.includes("mainImage")) {
+                                    mainImageUrl = url;
+                                } else {
+                                    otherImages.push(url);
+                                }
+                            }),
+                        );
+
+                        return {
+                            ...project,
+                            image: mainImageUrl,
+                            images: otherImages.length > 0 ? otherImages : project.images,
+                        };
+                    } catch (error) {
+                        console.error("Error fetching images for project " + project.title, error);
+                        return project;
+                    }
+                }),
+            );
+            setProjectList(updatedProjects);
+        };
+        fetchImages();
+    }, []);
+
     const categories = ["All", "Web App", "SaaS", "FinTech", "EdTech"];
 
     const filteredProjects =
-        filter === "All" ? projects : projects.filter((p) => p.category === filter);
+        filter === "All" ? projectList : projectList.filter((p) => p.category === filter);
 
     const handleProjectClick = (project: Project) => {
         setSelectedProject(project);

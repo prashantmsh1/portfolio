@@ -14,6 +14,7 @@ interface Project {
     images?: string[];
     featured?: boolean;
     category: string;
+    about?: string[];
 }
 
 interface ProjectDrawerProps {
@@ -148,25 +149,13 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ project, isOpen, onClose 
                                                     <p className="text-gray-300 leading-relaxed">
                                                         {project.description}
                                                     </p>
-                                                    <p className="text-gray-400 leading-relaxed text-base">
-                                                        This project represents a significant
-                                                        milestone in modern web development,
-                                                        leveraging cutting-edge technologies to
-                                                        deliver an exceptional user experience. From
-                                                        its intuitive interface to its robust
-                                                        backend architecture, every aspect has been
-                                                        meticulously crafted to ensure performance,
-                                                        scalability, and accessibility.
-                                                    </p>
-                                                    <p className="text-gray-400 leading-relaxed text-base">
-                                                        The design philosophy focuses on minimalism
-                                                        and functionality, ensuring that users can
-                                                        navigate the platform with ease. Advanced
-                                                        features such as real-time updates,
-                                                        AI-driven insights, and seamless
-                                                        integrations make this a standout solution
-                                                        in its category.
-                                                    </p>
+                                                    {project.about?.map((paragraph, index) => (
+                                                        <p
+                                                            key={index}
+                                                            className="text-gray-400 leading-relaxed text-base">
+                                                            {paragraph}
+                                                        </p>
+                                                    ))}
                                                 </div>
                                             </div>
 
@@ -198,14 +187,7 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ project, isOpen, onClose 
                                                             2024
                                                         </p>
                                                     </div>
-                                                    <div>
-                                                        <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">
-                                                            Client
-                                                        </h4>
-                                                        <p className="text-white font-medium">
-                                                            Confidential
-                                                        </p>
-                                                    </div>
+
                                                     <div>
                                                         <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-1">
                                                             Role
