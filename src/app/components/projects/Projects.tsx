@@ -18,6 +18,7 @@ interface Project {
     category: string;
     filepath?: string;
     about?: string[];
+    video?: string;
 }
 
 const projects: Project[] = [
@@ -39,6 +40,7 @@ const projects: Project[] = [
             "The robust backend infrastructure runs on Node.js and Express, securely managing user data and API routes with Prisma ORM and PostgreSQL alongside Firebase for authentication.",
             "It seamlessly integrates with Gemini API to generate diverse, real-time streaming responses within continuous chat threads.",
         ],
+        video: "https://firebasestorage.googleapis.com/v0/b/prashant-portfolio-12345.appspot.com/o/projects%2Fevokechat%2Fdemo-video.mp4?alt=media&token=12345678-1234-5678-1234-567812345678",
     },
     // {
     //     id: 2,
@@ -96,6 +98,7 @@ const Projects = () => {
                         const result = await listAll(folderRef);
 
                         let mainImageUrl = project.image;
+                        let videoUrl = project.video;
                         const otherImages: string[] = [];
 
                         await Promise.all(
@@ -103,6 +106,12 @@ const Projects = () => {
                                 const url = await getDownloadURL(itemRef);
                                 if (itemRef.name.includes("mainImage")) {
                                     mainImageUrl = url;
+                                } else if (
+                                    itemRef.name.match(/\\.(mp4|webm|ogg|mov)$/i) ||
+                                    itemRef.name.includes("demo-video") ||
+                                    itemRef.name.includes("demo_video")
+                                ) {
+                                    videoUrl = url;
                                 } else {
                                     otherImages.push(url);
                                 }
@@ -112,6 +121,7 @@ const Projects = () => {
                         return {
                             ...project,
                             image: mainImageUrl,
+                            video: videoUrl,
                             images: otherImages.length > 0 ? otherImages : project.images,
                         };
                     } catch (error) {
