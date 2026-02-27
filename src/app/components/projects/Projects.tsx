@@ -24,7 +24,7 @@ const projects: Project[] = [
     {
         id: 1,
         title: "Evoke Ai Chat",
-        description: "AI-powered e-commerce platform with real-time analytics.",
+        description: "AI-powered conversational search engine with real-time chat with LLM.",
         tags: ["React.js", "Node.js", "Express.js", "TypeScript", "Firebase", "Gemini API"],
         image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=80",
         images: [],
