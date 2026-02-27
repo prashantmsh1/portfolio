@@ -1,7 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, Github } from "lucide-react";
+import { X, ExternalLink, Github, Play } from "lucide-react";
 import { useScroll } from "../../context/ScrollContext";
+import ReactPlayer from "react-player";
+
+// Bypass v3 typings issue in React 19
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Player = ReactPlayer as any;
 
 interface Project {
     id: number;
@@ -15,6 +20,7 @@ interface Project {
     featured?: boolean;
     category: string;
     about?: string[];
+    video?: string;
 }
 
 interface ProjectDrawerProps {
@@ -25,6 +31,12 @@ interface ProjectDrawerProps {
 
 const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ project, isOpen, onClose }) => {
     const { stop, start } = useScroll();
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    // Reset video state when a new project opens or drawer closes
+    useEffect(() => {
+        setIsPlaying(false);
+    }, [project, isOpen]);
 
     // Close on escape key
     useEffect(() => {
@@ -87,14 +99,44 @@ const ProjectDrawer: React.FC<ProjectDrawerProps> = ({ project, isOpen, onClose 
                             data-lenis-prevent
                             className="h-full overflow-y-auto rounded-t-4xl overflow-x-hidden scrollbar-hide">
                             {/* Hero Image Section */}
-                            <div className="relative h-[45vh] rounded-t-4xl w-full">
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="h-full w-full object-cover"
-                                />
-                                <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-[#0a0a0a]" />
-                                <div className="absolute inset-0 bg-black/20" />
+                            <div className="relative h-[45vh] lg:h-[55vh] rounded-t-4xl w-full group bg-black overflow-hidden flex justify-center items-center">
+                                {project.video && isPlaying ? (
+                                    <Player
+                                        url={project.video}
+                                        playing
+                                        controls
+                                        width="100%"
+                                        height="100%"
+                                        className="absolute top-0 left-0"
+                                        style={{ backgroundColor: "black" }}
+                                    />
+                                ) : (
+                                    <>
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="h-full w-full object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-[#0a0a0a]" />
+                                        <div className="absolute inset-0 bg-black/20 transition-opacity duration-300 group-hover:bg-black/40" />
+
+                                        {/* Play Button overlay if video is available */}
+                                        {project.video && (
+                                            <button
+                                                onClick={() => setIsPlaying(true)}
+                                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center 
+                                                           w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 
+                                                           text-white hover:bg-white/20 hover:scale-110 transition-all duration-300 
+                                                           shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_50px_rgba(255,255,255,0.3)] z-10"
+                                                aria-label="Play video demo">
+                                                <Play
+                                                    className="w-8 h-8 sm:w-10 sm:h-10 ml-2"
+                                                    fill="currentColor"
+                                                />
+                                            </button>
+                                        )}
+                                    </>
+                                )}
                             </div>
 
                             {/* Content Body */}
