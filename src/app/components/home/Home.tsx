@@ -5,6 +5,7 @@ import Navbar from "../Navbar";
 import Hero from "../hero/hero";
 import InfoGrid from "../infogrid/InfoGrid";
 import Projects from "../projects/Projects";
+import Experience from "../experience/Experience";
 import About from "../about/About";
 import Skills from "../skills/Skills";
 import Connect from "../connect/Connect";
@@ -18,6 +19,7 @@ const home = () => {
             <About />
             <InfoGrid />
             <Projects />
+            <Experience />
             <Skills />
             <Connect />
             <Footer />
