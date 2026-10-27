@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, MonitorSmartphone } from "lucide-react";
+import { ArrowRight, Mail, MonitorSmartphone, Linkedin } from "lucide-react";
 import StarsBackground from "./StarsBackground";
 
 const hero = () => {
@@ -61,16 +61,40 @@ const hero = () => {
                             <span>a Full Stack Developer</span>
                         </div>
 
-                        <div className="relative flex flex-col sm:flex-row items-center gap-4 ">
-                            <motion.button
+                        <div className="relative flex flex-col sm:flex-row items-center gap-4 flex-wrap justify-center">
+                            <motion.a
+                                href="https://x.com/prashantmsh"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="relative z-20 hover:bg-[var(--isabelline-900)] hover:text-[var(--space_cadet-100)] px-6 py-3 rounded-full font-medium flex items-center gap-2 transition-all duration-300 bg-[var(--isabelline-900)]/10 backdrop-blur-sm border border-[var(--isabelline-900)]/10">
-                                Let's Connect
-                                <div className=" rounded-full bg-[var(--isabelline-900)] text-[var(--space_cadet-100)] p-1">
+                                className="relative z-20 group hover:bg-[var(--isabelline-900)] hover:text-[var(--space_cadet-100)] px-6 py-3 rounded-full font-medium flex items-center gap-2 transition-all duration-300 bg-[var(--isabelline-900)]/10 backdrop-blur-sm border border-[var(--isabelline-900)]/10">
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    aria-hidden="true"
+                                    fill="currentColor"
+                                    className="w-4 h-4 fill-current">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                                <span>Let's Connect</span>
+                                <div className="rounded-full bg-[var(--isabelline-900)] text-[var(--space_cadet-100)] group-hover:bg-[var(--space_cadet-100)] group-hover:text-[var(--isabelline-900)] transition-colors p-1">
                                     <ArrowRight className="w-3 h-3" />
                                 </div>
-                            </motion.button>
+                            </motion.a>
+
+                            <motion.a
+                                href="https://www.linkedin.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="relative z-20 group hover:bg-[var(--isabelline-900)] hover:text-[var(--space_cadet-100)] px-6 py-3 rounded-full font-medium flex items-center gap-2 transition-all duration-300 bg-[var(--isabelline-900)]/10 backdrop-blur-sm border border-[var(--isabelline-900)]/10">
+                                <Linkedin className="w-4 h-4" />
+                                <span>LinkedIn</span>
+                                <div className="rounded-full bg-[var(--isabelline-900)] text-[var(--space_cadet-100)] group-hover:bg-[var(--space_cadet-100)] group-hover:text-[var(--isabelline-900)] transition-colors p-1">
+                                    <ArrowRight className="w-3 h-3" />
+                                </div>
+                            </motion.a>
 
                             <motion.a
                                 href="https://mail.google.com/mail/?view=cm&fs=1&to=prashantkr.msh@gmail.com"

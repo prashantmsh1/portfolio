@@ -59,7 +59,9 @@ const Navbar = () => {
                 <motion.a
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    href="#connect"
+                    href="https://x.com/prashantmsh"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
                     className="ml-1 rounded-full bg-white px-5 py-2 text-sm font-semibold text-black transition-colors hover:bg-gray-200">
                     Let's Talk

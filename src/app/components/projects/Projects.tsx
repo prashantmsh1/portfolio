@@ -120,6 +120,39 @@ const projects: Project[] = [
             "Deployed the application on a VPS with production configuration including reverse proxy setup, environment isolation, logging, and monitoring to maintain uptime and operational stability.",
         ],
     },
+    {
+        id: 4,
+        title: "Scribble – Real-Time Multiplayer Drawing Game",
+        description:
+            "Multiplayer Pictionary platform built for live canvas sync, turn-based game orchestration, and low-latency room state across a Bun monorepo.",
+        tags: [
+            "Next.js",
+            "React",
+            "Bun",
+            "Hono",
+            "WebSocket",
+            "Redis",
+            "PostgreSQL",
+            "Drizzle ORM",
+            "Turborepo",
+            "Excalidraw",
+            "Zustand",
+            "Tailwind CSS",
+        ],
+        image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80",
+        images: [],
+        featured: false,
+        category: "Real-Time Multiplayer Systems",
+        link: "https://scribbleweb.prashantai.com/",
+        github: "https://github.com/prashantmsh1/scribble",
+        filepath: "/projects/scribble",
+        about: [
+            "Built a full-stack multiplayer drawing game in a Turborepo monorepo, with a Next.js client and a Bun/Hono API that streams canvas strokes, chat guesses, and room events over WebSockets.",
+            "Modeled the game loop around Redis-backed room state: player presence, turn order, secret words, round timers, scores, and guessed-player sets, with broadcast updates so every client stays in sync.",
+            "Synced collaborative drawing through Excalidraw, publishing create, update, and delete events on Bun’s native socket pub/sub so strokes appear for the rest of the room without a full state reload.",
+            "Exposed room and session APIs on Hono with cookie-based identity, Drizzle ORM on PostgreSQL for user records, and structured error handling so failed joins and missing sessions return consistent responses.",
+        ],
+    },
 ];
 
 const Projects = () => {

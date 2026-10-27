@@ -16,6 +16,20 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
     {
         id: 1,
+        company: "DeliverIt by Urban Harvest",
+        role: "Frontend Developer",
+        period: "May 2026 – Present",
+        location: "Noida, India",
+        description: [
+            "Architected a multi-brand design system and reusable component library using React, Vite, and Tailwind CSS with runtime product-based theme switching and Jest unit test coverage, accelerating frontend feature delivery by 35% across consumer applications.",
+            "Engineered an enterprise React 19 Warehouse Management System (WMS) utilizing a tri-layer state architecture (TanStack Query, MobX, and React Router) to power end-to-end fulfillment across pick-waves, sorting, GRN gate control, and workforce operations.",
+            "Replaced HTTP polling with Server-Sent Events (SSE) for real-time work-center boards and live task assignment consoles, while tuning TanStack Query cache invalidation and filter debouncing to cut redundant network payloads by 50%.",
+            "Implemented enterprise authentication and authorization across multi-warehouse operations using Keycloak SSO, automated Axios token-refresh interceptors, and custom permission hooks enforcing granular action-level RBAC.",
+            "Built interactive spatial warehouse floor-plan mapping (zone, aisle, and bin management) with MapLibre, adaptive desktop/mobile data grids using MUI and Radix UI, and multi-step operational workflows validated with React Hook Form and Zod.",
+        ],
+    },
+    {
+        id: 2,
         company: "Rapipay Fintech Pvt Ltd",
         role: "Product Engineer",
         period: "September 2024 – February 2026",
@@ -30,7 +44,7 @@ const experiences: ExperienceItem[] = [
         ],
     },
     {
-        id: 2,
+        id: 3,
         company: "HyggexWorld",
         role: "React Developer Intern",
         period: "May 2024 – July 2024",
